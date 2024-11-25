@@ -24,15 +24,26 @@ $$ $$
 ## Derivation
 To understand these numerical methods a bit better, the derivations are key. First we will consider explicit methods. Consider the first-order ordinary differential equation 
 
-$$\Ddot{x} = -0.4x$$
+$$\dot{x} = -0.4x$$
 
 This can be rewritten as
 
-$$\frac{\Deltax}{\Deltat} = -0.4x$$
+$$\frac{\Delta x}{\Delta t} = -0.4x$$
 
 and then
 
-$$\DeltaX = -0.4x\Deltat$$
+$$ = -0.4x\Delta t$$
+
+which is equvalent to
+
+$$\Delta x = \dot{x}\Delta t$$
+
+This gives the change in $x$ per time step $/Delta t$, so then next the state of the system is
+
+$$x(t+\Delta t) = x(t)+\Delta x$$
+
+$$x(t+\Delta) = \frac{dx}{dt}\Delta t + x(t)$$
+
 
 ## Accuracy and Stabillity
 Implicit is unconditionally stable
