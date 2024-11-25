@@ -9,9 +9,14 @@ In numerical analysis, time-stepping methods are one of the most fundamental for
 
 ## Background
 These methods are seperated into two primary categories, explicit and implicit. Explicit methods approximate the state of the system at a later time based off of the state of the system at the current time. Given the differential equation and an initial condition, the algorithm can compute the next system-state over and over one step at a time. This is also commonly referred to as "time-marching." The algorithm is commonly written as 
+
 $$x(t+\Delta) = \frac{dx}{dt}\Delta t + x(t)$$
+
 or 
+
 $$x_{i+1} = \dot{x}_i\Delta t + x_i$$
+
+where $\Delta t$ is chosen by the user, $x_i$ is known from the initial condition, and \dot{x}_i can be solved for directly from the differential equation. Since all of the terms on the right side of the equation are known, the next system-state can be directly computed.
 
 Implicit methods, on the other hand, look to find the next system-state by solving an equation
 
