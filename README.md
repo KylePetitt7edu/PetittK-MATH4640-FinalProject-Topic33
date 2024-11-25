@@ -5,7 +5,7 @@ Title: Accuracy and Stability of Different Types of Time-Stepping Methods
 ----
 
 # Accuracy and Stability of Different Types of Time-Stepping Methods
-In  numerical analysis, time-stepping methods are one of the most fundamental forms of numerical integration.
+In numerical analysis, time-stepping methods are one of the most fundamental forms of numerical integration. These methods are commonly used to integrate time-dependent ordinary differential equations (ODEs) and partial differential equations (PDEs) \cite{xxxx}. They are approximate methods that are highly dependent on user parameters and model properties for accuracy, but can be used to spproximate the behavior of a variety of systems with high fidelity. They are especoally useful for integrating systems with no analytical solution, and are used widely used in industry in research. These methods are seperated into two primary categories, implicit and explicit, which will be discussed shortly. 
 
 ## Background
 
