@@ -16,22 +16,41 @@ or
 
 $$x_{i+1} = \dot{x}_i\Delta t + x_i$$
 
-where $\Delta t$ is chosen by the user, $x_i$ is known from the initial condition, and \dot{x}_i can be solved for directly from the differential equation. Since all of the terms on the right side of the equation are known, the next system-state can be directly computed.
+where $\Delta t$ is chosen by the user, $x_i$ is known from the initial condition, and $\dot{x}_i$ can be solved for directly from the differential equation. Since all of the terms on the right side of the equation are known, the next system-state can be directly computed.
+Implicit methods, on the other hand, look to find the next system-state by solving an equation where both the next system-state and the rate of the change of the system are unknown. These values are then computed simultaneously, and typically via numerical methods as they are usually nonlinear in nature. This algorithm is typically written as 
 
-Implicit methods, on the other hand, look to find the next system-state by solving an equation
-
-
-## Types of time-stepping integration
+$$ $$
 
 ## Derivation
+To understand these numerical methods a bit better, the derivations are key. First we will consider explicit methods. Consider the first-order ordinary differential equation 
 
+$$\Ddot{x} = -0.4x$$
+
+This can be rewritten as
+
+$$\frac{\Deltax}{\Deltat} = -0.4x$$
+
+and then
+
+$$\DeltaX = -0.4x\Deltat$$
 
 ## Accuracy and Stabillity
 Implicit is unconditionally stable
 
+## Example and Sample Code
+Consider the 1st-order 
+$$x(t+\Delta) = \frac{dx}{dt}\Delta t + x(t)$$
+
+or 
+
+$$x_{i+1} = \dot{x}_i\Delta t + x_i$$
+
 ## "Why they are what they are"
 
-## Example and Sample Code
+## Fringe Cases
+Stiff systems
+
+## Implicit-Explicit Method (IMEX)
 
 ## Applications
 
