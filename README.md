@@ -21,7 +21,7 @@ Implicit methods, on the other hand, look to find the next system-state by solvi
 
 $$G(x(t),x(t+\Delta t)) = 0$$
 
-Numerical methods are commonly needed to solve for $x(t+\Delta t)$, which adds an additional and expensive step to the process. This may seem like a roundabout way to find the next system state, but the implicit methods has its merits which will be discussed in subsepquent sections.
+Numerical methods are commonly needed to solve for $x(t+\Delta t)$ in the implicit case, which adds an additional and expensive step to the process. This may seem like a roundabout way to find the next system state, but the implicit methods has its merits which will be discussed in subsepquent sections.
 
 ## Derivation
 To understand these numerical methods a bit better, the derivations are key. First we will look at the simplest form of the explicit method using a first-order, ordinary differential equation of form
@@ -49,6 +49,7 @@ which is equvalent to our final form
 $$x(t+\Delta) \approx \frac{dx}{dt}\Delta t + x(t)$$
 
 which is Forward Euler's integration. Note that this method depends heavily on the size of $\Delta t$, which is chosen by the user. Intuitively, as the size of $\Delta t$ is decreased, the accuracy of the approximation increases, which will be discussed later. Unfortunately, with this increase in accuracy, we have a direct increase in run time.
+
 
 
 ## Accuracy and Stabillity
