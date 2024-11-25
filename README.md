@@ -5,15 +5,16 @@ Title: Accuracy and Stability of Different Types of Time-Stepping Methods
 ----
 
 # Accuracy and Stability of Different Types of Time-Stepping Methods
-In numerical analysis, time-stepping methods are one of the most fundamental forms of numerical integration. These methods are commonly used to integrate time-dependent ordinary differential equations (ODEs) and partial differential equations (PDEs) \cite{xxxx}. They are approximate methods that are highly dependent on user parameters and model properties for accuracy and stability, but can be used to approximate the behavior of a variety of systems with high fidelity if applied correectly. They are especially useful for integrating systems with no analytical solution, and are often used in industry and research.  
+In numerical analysis, time-stepping methods are one of the most fundamental forms of numerical integration. These methods are commonly used to integrate time-dependent ordinary differential equations (ODEs) and partial differential equations (PDEs) \cite{xxxx}. They are approximate methods that are dependent on user parameters and model properties, but can be used to approximate the behavior of a variety of systems with high fidelity if applied correectly. They are especially useful for integrating systems with no analytical solution, and are often used in industry and research. This wiki will serve to provide an introduction to the accuracy and stability of such methods, but a more in-depth study is left to the reader.
 
 ## Background
-These methods are seperated into two primary categories, explicit and implicit. Explicit methods approximate the state of the system at a later time based off of the state of the system at the current time. Given an initial condition, the algorithm can compute the next system state over and over one step at a time. This is also commonly referred to as "time-marching." Implicit methods use the current st
+These methods are seperated into two primary categories, explicit and implicit. Explicit methods approximate the state of the system at a later time based off of the state of the system at the current time. Given an initial condition, the algorithm can compute the next system-state over and over one step at a time. This is also commonly referred to as "time-marching." Implicit methods form a system of equations involving the state of the system at each point in time over a given interval to compute the state at each point in time simultaneously.
 
 
 ## Types of time-stepping integration
 
 ## Derivation
+$$x(t+\Delta) = \frac{dx}{dx}\Delta t + x(t)$$
 
 ## Accuracy and Stabillity
 
