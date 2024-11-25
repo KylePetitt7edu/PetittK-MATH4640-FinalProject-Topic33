@@ -22,39 +22,61 @@ Implicit methods, on the other hand, look to find the next system-state by solvi
 $$ $$
 
 ## Derivation
-To understand these numerical methods a bit better, the derivations are key. First we will consider explicit methods. Consider the first-order ordinary differential equation 
+To understand these numerical methods a bit better, the derivations are key. First we will look at the explicit method's derivation using a first-order, ordinary differential equation  of form
 
 $$\dot{x} = -0.4x$$
 
 This can be rewritten as
 
-$$\frac{\Delta x}{\Delta t} = -0.4x$$
+$$\frac{dx}{dt} = -0.4x$$
 
 and then
 
-$$ = -0.4x\Delta t$$
+$$\Delta x \approx -0.4x\Delta t$$
 
 which is equvalent to
 
-$$\Delta x = \dot{x}\Delta t$$
+$$\Delta x \approx \dot{x}\Delta t$$
 
-This gives the change in $x$ per time step $/Delta t$, so then next the state of the system is
+This gives the change in $x$ per time step $/Delta t$, so then next the state of the system can be computed directly, and is
 
-$$x(t+\Delta t) = x(t)+\Delta x$$
+$$x(t+\Delta t) \approx x(t)+\Delta x$$
 
-$$x(t+\Delta) = \frac{dx}{dt}\Delta t + x(t)$$
+which is equvalent to our final form
+
+$$x(t+\Delta) \approx \frac{dx}{dt}\Delta t + x(t)$$
+
+which is Euler's
 
 
 ## Accuracy and Stabillity
+The accuracy and stability of these two methods
+
+
 Implicit is unconditionally stable
 
 ## Example and Sample Code
-Consider the 1st-order 
+Consider the same first-order, ordinary differential equation as before.
+
 $$x(t+\Delta) = \frac{dx}{dt}\Delta t + x(t)$$
+
+This ODE can be solved analytically yielding the equation
+
+$$x(t) = x_0e^{-0.4t}$$
+
+where $x_0$ is the given initial condition. Using Forward Euler integration
+
+$$x_{i+1} = \dot{x}_i\Delta t + x_i$$
+
+and varying the value of $\Delta t$, we can produce this plot showing how the size of $\Delta t$ can directly affect the accuracy of the integration.
+
+
+This algorithm is only useful for sufficiently small time step.
+
 
 or 
 
-$$x_{i+1} = \dot{x}_i\Delta t + x_i$$
+
 
 ## "Why they are what they are"
 
