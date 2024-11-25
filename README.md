@@ -5,24 +5,26 @@ Title: Accuracy and Stability of Different Types of Time-Stepping Methods
 ----
 
 # Accuracy and Stability of Different Types of Time-Stepping Methods
-In numerical analysis, time-stepping methods are one of the most fundamental forms of numerical integration. These methods are commonly used to integrate time-dependent ordinary differential equations (ODEs) and partial differential equations (PDEs) \cite{xxxx}. They are approximate methods that are dependent on user parameters and model properties, but can be used to approximate the behavior of a variety of systems with high fidelity if applied correectly. They are especially useful for integrating systems with no analytical solution, and are often used in industry and research. This wiki will serve to provide an introduction to the accuracy and stability of such methods, but a more in-depth study is left to the reader.
+In numerical analysis, time-stepping methods are one of the most fundamental forms of numerical integration. These methods are commonly used to integrate time-dependent ordinary differential equations (ODEs) and partial differential equations (PDEs) \cite{xxxx}. They are approximate methods that are dependent on user parameters and model properties, but can be used to approximate the behavior of a variety of systems with high fidelity if applied correectly. They are especially useful for integrating systems with no analytical solution, and are often used in industry and research. This wiki will serve to provide an introduction to the accuracy and stability of such methods, but a more in-depth study is left to the reader. Only first-order, ordinary differential equation initial-value problems (IVPs) will be discussed directly, although these methods can be applied to higher order systems and a range of conditions.
 
 ## Background
 These methods are seperated into two primary categories, explicit and implicit. Explicit methods approximate the state of the system at a later time based off of the state of the system at the current time. Given the differential equation and an initial condition, the algorithm can compute the next system-state over and over one step at a time. This is also commonly referred to as "time-marching." The algorithm is commonly written as 
 
-$$x(t+\Delta) = \frac{dx}{dt}\Delta t + x(t)$$
+$$x(t+\Delta t) = F(x(t))$$
 
 or 
 
-$$x_{i+1} = \dot{x}_i\Delta t + x_i$$
+$$x_{i+1} = F(x_i)$$
 
-where $\Delta t$ is chosen by the user, $x_i$ is known from the initial condition, and $\dot{x}_i$ can be solved for directly from the differential equation. Since all of the terms on the right side of the equation are known, the next system-state can be directly computed.
-Implicit methods, on the other hand, look to find the next system-state by solving an equation where both the next system-state and the rate of the change of the system are unknown. These values are then computed simultaneously, and typically via numerical methods as they are usually nonlinear in nature. This algorithm is typically written as 
+where $F$ can be calculated directly (example shown later) and $x_i$ is known from the initial condition or previous time step computation. Since all of the terms on the right side of the equation are known, the next system-state can be directly computed.
+Implicit methods, on the other hand, look to find the next system-state by solving an equation using the current state and next state. These values are then computed simultaneously, and typically via numerical methods as they are usually nonlinear in nature. This algorithm is typically written as 
 
-$$ $$
+$$G(x(t),x(t+\Delta t)) = 0$$
+
+Numerical methods are commonly needed to solve for $x(t+\Delta t)$, which adds an additional and expensive step to the process. This may seem like a roundabout way to find the next system state, but the implicit methods has its merits which will be discussed in subsepquent sections.
 
 ## Derivation
-To understand these numerical methods a bit better, the derivations are key. First we will look at the explicit method's derivation using a first-order, ordinary differential equation  of form
+To understand these numerical methods a bit better, the derivations are key. First we will look at the simplest form of the explicit method using a first-order, ordinary differential equation of form
 
 $$\dot{x} = -0.4x$$
 
@@ -38,7 +40,7 @@ which is equvalent to
 
 $$\Delta x \approx \dot{x}\Delta t$$
 
-This gives the change in $x$ per time step $/Delta t$, so then next the state of the system can be computed directly, and is
+This gives the change in $x$ per time step $/Delta t$, so the next state of the system can be computed directly. The next state and is thus approximately
 
 $$x(t+\Delta t) \approx x(t)+\Delta x$$
 
@@ -46,7 +48,7 @@ which is equvalent to our final form
 
 $$x(t+\Delta) \approx \frac{dx}{dt}\Delta t + x(t)$$
 
-which is Euler's
+which is Forward Euler's integration. Note that this method depends heavily on the size of $\Delta t$, which is chosen by the user. Intuitively, as the size of $\Delta t$ is decreased, the accuracy of the approximation increases, which will be discussed later. Unfortunately, with this increase in accuracy, we have a direct increase in run time.
 
 
 ## Accuracy and Stabillity
