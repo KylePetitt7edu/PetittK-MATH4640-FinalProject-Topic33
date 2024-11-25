@@ -70,7 +70,7 @@ $$x_{i+1} = \dot{x}_i\Delta t + x_i$$
 
 and varying the value of $\Delta t$, we can produce this plot showing how the size of $\Delta t$ can directly affect the accuracy of the integration.
 
-![](MATH4640_FinalProject_Figure-TimestepComparison)
+![](MATH4640_FinalProject_Figure-TimestepComparison.jpg)
 
 This algorithm is only useful for sufficiently small time step.
 
