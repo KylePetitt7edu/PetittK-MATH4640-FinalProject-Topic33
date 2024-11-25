@@ -5,13 +5,17 @@ Title: Accuracy and Stability of Different Types of Time-Stepping Methods
 ----
 
 # Accuracy and Stability of Different Types of Time-Stepping Methods
-In numerical analysis, time-stepping methods are one of the most fundamental forms of numerical integration. These methods are commonly used to integrate time-dependent ordinary differential equations (ODEs) and partial differential equations (PDEs) \cite{xxxx}. They are approximate methods that are highly dependent on user parameters and model properties for accuracy, but can be used to spproximate the behavior of a variety of systems with high fidelity. They are especoally useful for integrating systems with no analytical solution, and are used widely used in industry in research. These methods are seperated into two primary categories, implicit and explicit, which will be discussed shortly. 
+In numerical analysis, time-stepping methods are one of the most fundamental forms of numerical integration. These methods are commonly used to integrate time-dependent ordinary differential equations (ODEs) and partial differential equations (PDEs) \cite{xxxx}. They are approximate methods that are highly dependent on user parameters and model properties for accuracy and stability, but can be used to approximate the behavior of a variety of systems with high fidelity if applied correectly. They are especially useful for integrating systems with no analytical solution, and are used used in industry and research.  
 
 ## Background
+These methods are seperated into two primary categories, explicit and implicit. Explicit methods approximate the state of the system at a later time based off of the state of the system at the current time. Given an initial condition, the algorithm can compute the next system state over and over one step at a time. This is also commonly referred to as "time-marching." Implicit methods use the current state of the sy
+
 
 ## Types of time-stepping integration
 
 ## Derivation
+
+## Accuracy and Stabillity
 
 ## "Why they are what they are"
 
@@ -25,7 +29,7 @@ In numerical analysis, time-stepping methods are one of the most fundamental for
 ## References
 
 1. https://en.wikipedia.org/wiki/Explicit_and_implicit_methods
-2. Can
+2. https://www.fidelisfea.com/post/time-integration-methods-for-implicit-and-explicit-fea-what-are-they-and-how-do-they-work
 3. Go
 4. Here
 5. Like
