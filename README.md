@@ -29,7 +29,7 @@ This can be rewritten as
 
 $$\frac{dx}{dt} = -0.4x$$
 
-and then
+For a sufficently small $\Delta t$, this can be rewritten as
 
 $$\Delta x \approx -0.4x\Delta t$$
 
@@ -37,7 +37,7 @@ which is equvalent to
 
 $$\Delta x \approx \dot{x}\Delta t$$
 
-This gives the change in $x$ per time step $/Delta t$, so the next state of the system can be computed directly. The next state and is thus approximately
+This gives the approximate change in $x$ per time step $\Delta t$, so the next state of the system can be computed directly. The next state and is thus approximately
 
 $$x(t+\Delta t) \approx x(t)+\Delta x$$
 
@@ -45,7 +45,9 @@ which is equvalent to our final form
 
 $$x(t+\Delta) \approx \frac{dx}{dt}\Delta t + x(t)$$
 
-which is Forward Euler's integration. Note that this method depends heavily on the size of $\Delta t$, which is chosen by the user. Intuitively, as the size of $\Delta t$ is decreased, the accuracy of the approximation increases, which will be discussed later. Unfortunately, with this increase in accuracy, we have a direct increase in run time.
+which is Forward Euler's integration. Note that this method depends heavily on the size of $\Delta t$, which is chosen by the user. Intuitively, as the size of $\Delta t$ is decreased, the accuracy of the approximation increases, which will be discussed later. Unfortunately this increase in accuracy, has a side-effect, a direct increase in run time.
+
+XXX Derivation of implicit method
 
 
 
@@ -58,7 +60,7 @@ Implicit is unconditionally stable
 ## Example and Sample Code
 Consider the same first-order, ordinary differential equation as before.
 
-$$x(t+\Delta) = \frac{dx}{dt}\Delta t + x(t)$$
+$$\dot{x} = -0.4x$$
 
 This ODE can be solved analytically yielding the equation
 
@@ -72,10 +74,7 @@ and varying the value of $\Delta t$, we can produce this plot showing how the si
 
 ![](MATH4640_FinalProject_Figure-TimestepComparison.jpg)
 
-This algorithm is only useful for sufficiently small time step.
-
-
-or 
+We see by inspection that this algorithm is only useful for sufficiently small time steps. As the size of the time step is decreased, the approximation converges to the analytical solution.
 
 
 
@@ -95,7 +94,7 @@ Stiff systems
 
 1. https://en.wikipedia.org/wiki/Explicit_and_implicit_methods
 2. https://www.fidelisfea.com/post/time-integration-methods-for-implicit-and-explicit-fea-what-are-they-and-how-do-they-work
-3. https://fncbook.github.io/fnc/ivp/implicit.html
+3. https://fncbook.github.io/fnc/ivp/overview.html
 4. Here
 5. Like
 6. This
