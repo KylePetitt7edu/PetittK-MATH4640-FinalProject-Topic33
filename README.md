@@ -12,16 +12,13 @@ These methods are seperated into two primary categories, explicit and implicit. 
 
 $$x(t+\Delta t) = F(x(t))$$
 
-or 
-
-$$x_{i+1} = F(x_i)$$
-
 where $F$ can be calculated directly (example shown later) and $x_i$ is known from the initial condition or previous time step computation. Since all of the terms on the right side of the equation are known, the next system-state can be directly computed.
+
 Implicit methods, on the other hand, look to find the next system-state by solving an equation using the current state and next state. These values are then computed simultaneously, and typically via numerical methods as they are usually nonlinear in nature. This algorithm is typically written as 
 
 $$G(x(t),x(t+\Delta t)) = 0$$
 
-Numerical methods are commonly needed to solve for $x(t+\Delta t)$ in the implicit case, which adds an additional and expensive step to the process. This may seem like a roundabout way to find the next system state, but the implicit methods has its merits which will be discussed in subsepquent sections.
+Numerical methods are commonly needed to solve for $x(t+\Delta t)$ in the implicit case, which adds an additional and often expensive step to the process. This may seem like a roundabout way to find the next system state when compared to the explicit method, but the implicit method has its merits which will be discussed in subsepquent sections.
 
 ## Derivation
 To understand these numerical methods a bit better, the derivations are key. First we will look at the simplest form of the explicit method using a first-order, ordinary differential equation of form
