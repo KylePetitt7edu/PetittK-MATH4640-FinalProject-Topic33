@@ -12,16 +12,16 @@ These methods are seperated into two primary categories, explicit and implicit. 
 
 $$x(t+\Delta t) = F(x(t))$$
 
-where the function $F$ can be calculated directly (example shown later) and $x_i$ is known from the given initial condition or previous time step computation. Since all of the terms on the right side of the equation are known, the next system-state can be directly computed. The most simple simple form of explicit methods is Forward Euler Integration, but there are many other techniques such as 
+where the function $F$ can be calculated directly (example shown later) and $x_i$ is known from the given initial condition or previous time step computation. Since all of the terms on the right side of the equation are known, the next system-state can be directly computed. The most simple simple form of explicit methods is Forward Euler Integration, but there are many other techniques such as explicit Runge-Kutta and the Adams-Bashford Algorithm [4].
 
 Implicit methods, on the other hand, look to find the next system-state by solving an equation using the current state and a future, unknown state(s). In most cases, iterative numerical methods are required to solve for the unknown state as they are usually nonlinear in nature and cannot be solved for explicitly. This algorithm is typically written as 
 
 $$G(x(t),x(t+\Delta t)) = 0$$
 
-The numerical methods commonly neeeded to solve for $x(t+\Delta t)$ add an additional and often expensive step to the process. This may seem like a roundabout way to find the next system state when compared to explicit methods, but the implicit method has its merits which will be discussed in subsepquent sections.
+The numerical methods commonly neeeded to solve for $x(t+\Delta t)$ add an additional and often expensive step to the process. This may seem like a roundabout way to find the next system state when compared to explicit methods, but the implicit method has its merits which will be discussed in subsequent sections. Other examples of implicit methods include implicit Runge-Kutta and the trapezoidal method.
 
 ## Derivation
-To understand these numerical methods a bit better, the derivations are key. First we will look at the simplest form of the explicit method using a first-order, ordinary differential equation of form
+To understand these numerical methods' strengths and differences a bit better, the derivations are key. First we will look at the simplest form of the explicit method using a first-order, ordinary differential equation of form
 
 $$\dot{x} = -0.4x$$
 
