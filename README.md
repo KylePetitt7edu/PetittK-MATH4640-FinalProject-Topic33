@@ -21,7 +21,7 @@ $$G(x(t),x(t+\Delta t)) = 0$$
 The numerical methods commonly neeeded to solve for $x(t+\Delta t)$ add an additional and often expensive step to the process. This may seem like a roundabout way to find the next system state when compared to explicit methods, but the implicit method has its merits which will be discussed in subsequent sections. Other examples of implicit methods include implicit Runge-Kutta and the trapezoidal method.
 
 ## Derivation
-To understand these numerical methods' strengths and differences a bit better, the derivations are key. First we will look at the simplest form of the explicit method using a first-order, ordinary differential equation of form
+To understand these numerical methods' strengths and differences a bit better, the derivations are key. First, the simplest form of the explicit method using a first-order, ordinary differential equation of form
 
 $$\frac{dx}{dt} = f(x(t),t)$$
 
@@ -45,9 +45,14 @@ This can then be simplified to its final, explicit form
 
 $$x_{i+1} \approx hf(x_i,t_i)+x_i$$
 
-which is known as Forward Euler's integration. Note that this method depends heavily on the size of $h$, which is chosen by the user. Intuitively, as the size of $h$ is decreased to 0, representing infinite $n$ intervals, the accuracy of the approximation approaches the exact solution. Unfortunately this increase in accuracy, has a side-effect, a direct increase in run time, which will be disussed later.
+which is known as Forward Euler's integration. Note that this method depends heavily on the size of $h$, which is chosen by the user. Intuitively, as the size of $h$ is decreased to 0, representing infinite $n$ intervals, the accuracy of the approximation approaches the exact solution. Unfortunately this increase in accuracy, has a side-effect, a direct increase in run time, which will be discussed later.
 
-XXX Derivation of implicit method
+The implicit method can be derived similarly given the same function. The first few steps are exactly with the exception that the slope, $f$, is a function of $f(x_{i+1},t_{i+1$}$ instead of $f(x_{i},t_{i})$
+
+$$\frac{x_{i+1}-x_i}{h} \approx f(x_{i+1},t_{i+1})$$
+
+is rewritten as
+
 
 
 
