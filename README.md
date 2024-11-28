@@ -57,27 +57,35 @@ Following similar steps, the equation can be simplified to
 
 $$f(x_{i+1},t_{i+1})h + x_i - x_{i+1} = 0$$
 
-where $t_{i+1}$, $x_i$, and $h$ are all known, and $x_{i+1}$ is still unknown. This is often called Backward Euler Method. Depending on $f$, this can be a really ugly, nonlinear equation and may require numerical methods to find the zero to find x{i+1}.
+where $t_{i+1}$, $x_i$, and $h$ are all known, and $x_{i+1}$ is still unknown. This is often called Backward Euler Method. Depending on $f$, this can be a really ugly, nonlinear equation and may require numerical methods to find the zero to find x_{i+1}. Note that it would take infinite iterations to find the exact zero, so the user is responsible for setting some acceptable tolerance value close to zero to approximate x_{i+1}.
 
 Having methods for solving otherwise unsolveable problems is a powerful tool, but the question remains: how accurate are these approximations, and how stable?
 
 ## Stability
 The concept of stability refers to the sensitivity of the solution of a given problem to small perturbations in inputs such as data or parameters [7]. The problem can be sensitive for two reasons, because the system itself is fundamentally sensitive to changes in input, which is commonly described ill-conditioned, or the problem can be ill-conditioned because of how a  numerical method is applied to it. Certain methods are more stable than others, and ideally, a numerical method shouldn't introduce  additional sensitivity to a problem.
 
-In using explecit methods to solve an IVP, the next step, $t_{i+1}$, is approximated based on information from the previous step, $t_i$. Some error may be introduced here depending on the problem at hand. Worse, this error is incorporated into the computation of the next step leading to errors being propagated through during the solution process.
+In using numerical methods to solve an IVP, the next step, $t_{i+1}$, is approximated based on information from the previous step, $t_i$. This goes for both the explicit and implicit methods. Some error may be introduced here depending on the problem. Worse, this error is then incorporated into the computation of the next step leading to errors being propagated through during the solution process.
 
 Given an IVP
 
-$$\dot{u} = f(t,u), \space \space u{t_i} = y_i$$
+$$\dot{u} = f(t,u), \space \space u(t_i) = y_i$$
 
 where $u$ is the solution and $y$ is the approximation. At each step, the local error can be calculated as
 
-err = u(t_i) - y(t_i)
+err_l = u(t_i) - y_{i}
 
-$$x(t_{i+1})-x{i+1} = []$$
+and the global error can be calculated as 
 
+err_g = y(t_{i})-y_{i}
 
-pg14
+Note that in the implicit method, the maximum local error is controlled by some tolerance value chosen by the user, limiting the global error indirectly [8]. The propagation of error can then be analyzed using using 
+
+$$y(t_{i})-y{i} = [u(t_{i})-y_{i}] + [y(t_i)-u(t_i)]$$
+
+where the first bracketed term is the local error controlled by the user [8], and the right bracketed term is the difference in the two solutions of the ODE at $t_i$. This second term is a property of the ODE and is often referred to as the true error [8]. If the IVP is stable, the true error will be comparable in magnitude to the local error. If the IVP is unstable, the true error will grow regardless of the size of the local errors. Note this happens regardless of the numerical method, but using methods with lower local effort can delay the rate of divergence from the true solution.
+
+stability of methods
+pg17
 
 Implicit is unconditionally stable
 
