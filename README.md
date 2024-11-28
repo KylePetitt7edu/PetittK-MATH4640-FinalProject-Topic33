@@ -20,7 +20,7 @@ $$G(x(t),x(t+\Delta t)) = 0$$
 
 The numerical methods commonly neeeded to solve for $x(t+\Delta t)$ add an additional and often expensive step to the process. This may seem like a roundabout way to find the next system state when compared to explicit methods, but the implicit method has its merits which will be discussed in subsequent sections. Other examples of implicit methods include implicit Runge-Kutta and the trapezoidal method.
 
-## Derivation
+## Derivation of Basic Explicit and Implicit Methods
 To understand these numerical methods' strengths and differences a bit better, the derivations are key. First, the simplest form of the explicit method using a first-order, ordinary differential equation of form
 
 $$\frac{dx}{dt} = f(x(t),t)$$
@@ -57,10 +57,10 @@ $$f(x_{i+1},t_{i+1})h + x_i - x_{i+1} = 0$$
 
 where $t_{i+1}$, $x_i$, and $h$ are all known, and $x_{i+1}$ is still unknown. This is often called Backward Euler Method. Depending on $f$, this can be a really ugly, nonlinear equation and may require numerical methods to find the zero to find x{i+1}.
 
-## Accuracy and Stabillity
+## Accuracy
 The accuracy and stability of these two methods
 
-
+## Stability
 Implicit is unconditionally stable
 
 ## Example and Sample Code
@@ -80,7 +80,7 @@ the given initial condition, and varying the value of $h$, we can produce this p
 
 ![](MATH4640_FinalProject_Figure-TimestepComparison.jpg)
 
-We see by inspection that this algorithm is only useful for sufficiently small time steps. As the size of the time step is decreased, the approximation converges to the analytical solution as expected.
+We see by inspection that this algorithm is only accurate for sufficiently small time steps, but the condition of the IVP makes it stable for all time steps. As the size of the time step is decreased, the approximation converges to the analytical solution as expected.
 
 
 
@@ -90,9 +90,6 @@ We see by inspection that this algorithm is only useful for sufficiently small t
 Stiff systems
 
 ## Implicit-Explicit Method (IMEX)
-
-## Applications
-
 
 ## Summary
 
