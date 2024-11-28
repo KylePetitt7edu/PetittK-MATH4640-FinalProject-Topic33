@@ -72,11 +72,11 @@ $$\dot{u} = f(t,u), \space \space u(t_i) = y_i$$
 
 where $u$ is the solution and $y$ is the approximation. At each step, the local error can be calculated as
 
-err_l = u(t_i) - y_{i}
+$$err_l = u(t_i) - y_{i}$$
 
 and the global error can be calculated as 
 
-err_g = y(t_{i})-y_{i}
+$$err_g = y(t_{i})-y_{i}$$
 
 Note that in the implicit method, the maximum local error is controlled by some tolerance value chosen by the user, limiting the global error indirectly [8]. The propagation of error can then be analyzed using using 
 
