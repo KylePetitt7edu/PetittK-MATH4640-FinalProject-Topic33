@@ -58,13 +58,9 @@ The accuracy and stability of these two methods
 Implicit is unconditionally stable
 
 ## Example and Sample Code
-Consider the same first-order, ordinary differential equation as before.
+Consider the IVP
 
-$$\dot{x} = -0.4x$$
-
-given 
-
-$$x(0) = x_0$$
+$$\dot{x} = -0.4x, \space \space x(0) = x_0$$
 
 This IVP can be solved analytically (this exercise is left to the reader) yielding the equation
 
