@@ -55,7 +55,7 @@ Following similar steps, the equation can be simplified to
 
 $$f(x_{i+1},t_{i+1})h + x_i - x_{i+1} = 0$$
 
-where $t_{i+1}$, $x_i$, and $h$ are all unknwon, and $x_{i+1}$ is still unknown. This is often called Backward Euler Method. Depending on $f$, this can be a really ugly, nonlinear equation and may require numerical methods to find the zero to find x{i+1}.
+where $t_{i+1}$, $x_i$, and $h$ are all known, and $x_{i+1}$ is still unknown. This is often called Backward Euler Method. Depending on $f$, this can be a really ugly, nonlinear equation and may require numerical methods to find the zero to find x{i+1}.
 
 ## Accuracy and Stabillity
 The accuracy and stability of these two methods
