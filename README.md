@@ -27,17 +27,17 @@ $$\frac{dx}{dt} = f(x(t),t)$$
 
 over the interval 
 
-$t \in [a,b]$
+$$t \in [a,b]$$
 
 where the interval $h$, this can be defined as
 
 $$h = \frac{b-a}{n}$$
 
-where $n$ is the integer number of subintervals in the interval $[a,b]$. The given ODE can then be approximated as
+and $n$ is the integer number of subintervals in the interval $[a,b]$. The given ODE can then be approximated as
 
-$$\frac{dx}{dt} \vert_{x=x_i} \approx \frac{x_{i+1}-x_i}{t_{i+1}-t_i} = \frac{x_{i+1}-x_i}{h}$$
+$$\frac{dx_i}{dt_i} \approx \frac{x_{i+1}-x_i}{t_{i+1}-t_i} = \frac{x_{i+1}-x_i}{h}$$
 
-and rewritten as
+for a particular time $t_i$, and rewritten as
 
 $$\frac{x_{i+1}-x_i}{h} \approx f(x_i,t_i)$$
 
