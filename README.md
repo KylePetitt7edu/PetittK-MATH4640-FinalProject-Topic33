@@ -35,7 +35,7 @@ $$h = \frac{b-a}{n}$$
 
 where $n$ is the integer number of subintervals in the interval $[a,b]$. We can then approximate the given ODE as
 
-$$\frac{dx}{dt} \vert_{x=x_i} = \frac{x_{i+1}-x_i}{t_{i+1}-t_i} = \frac{x_{i+1}-x_i}{h}$$
+$$\left\space \frac{dx}{dt} \right\vert_{x=x_i} = \frac{x_{i+1}-x_i}{t_{i+1}-t_i} = \frac{x_{i+1}-x_i}{h}$$
 
 $$\Delta x \approx -0.4x\Delta t$$
 
