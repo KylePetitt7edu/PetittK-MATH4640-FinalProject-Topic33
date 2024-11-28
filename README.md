@@ -23,13 +23,19 @@ The numerical methods commonly neeeded to solve for $x(t+\Delta t)$ add an addit
 ## Derivation
 To understand these numerical methods' strengths and differences a bit better, the derivations are key. First we will look at the simplest form of the explicit method using a first-order, ordinary differential equation of form
 
-$$\dot{x} = -0.4x$$
+$$\frac{dx}{dt} = f(x(t),t)$$
 
-This can be rewritten as
+over the interval 
 
-$$\frac{dx}{dt} = -0.4x$$
+$t /in [a,b]$
 
-For a sufficently small $\Delta t$, this can be rewritten as
+where the interval $h$, this can be defined as
+
+$$h = \frac{b-a}{n}$$
+
+where $n$ is the integer number of subintervals in the interval $[a,b]$. We can then approximate the given ODE as
+
+$$\frac{dx}{dt}|_{x=x_i} = \frac{x_{i+1}-x_i}{t_{i+1}-t_i} = \frac{x_{i+1}-x_i}{h}$$
 
 $$\Delta x \approx -0.4x\Delta t$$
 
