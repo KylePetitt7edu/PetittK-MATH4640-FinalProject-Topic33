@@ -41,11 +41,11 @@ for a particular time $t_i$, and rewritten as
 
 $$\frac{x_{i+1}-x_i}{h} \approx f(x_i,t_i)$$
 
-and simplified to its final explicit form
+This can then be simplified to its final, explicit form
 
 $$x_{i+1} \approx hf(x_i,t_i)+x_i$$
 
-which is known as Forward Euler's integration. Note that this method depends heavily on the size of $h$, which is chosen by the user. Intuitively, as the size of $h$ is decreased to 0, the accuracy of the approximation approaches the exact solution, which will be discussed later. Unfortunately this increase in accuracy, has a side-effect, a direct increase in run time.
+which is known as Forward Euler's integration. Note that this method depends heavily on the size of $h$, which is chosen by the user. Intuitively, as the size of $h$ is decreased to 0, representing infinite $n$ intervals, the accuracy of the approximation approaches the exact solution. Unfortunately this increase in accuracy, has a side-effect, a direct increase in run time, which will be disussed later.
 
 XXX Derivation of implicit method
 
@@ -62,19 +62,23 @@ Consider the same first-order, ordinary differential equation as before.
 
 $$\dot{x} = -0.4x$$
 
-This ODE can be solved analytically yielding the equation
+given 
+
+$$x(0) = x_0$$
+
+This IVP can be solved analytically (this exercise is left to the reader) yielding the equation
 
 $$x(t) = x_0e^{-0.4t}$$
 
-where $x_0$ is the given initial condition. Using Forward Euler integration
+where $x_0$ is the given initial condition. Using Forward Euler integration,
 
-$$x_{i+1} = \dot{x}_i\Delta t + x_i$$
+$$x_{i+1} \approx hf(x_i,t_i) + x_i = -0.4x_ih+x_i$$
 
-and varying the value of $\Delta t$, we can produce this plot showing how the size of $\Delta t$ can directly affect the accuracy of the integration.
+the given initial condition, and varying the value of $h$, we can produce this plot showing how the size of $h$ can directly affect the accuracy of the integration.
 
 ![](MATH4640_FinalProject_Figure-TimestepComparison.jpg)
 
-We see by inspection that this algorithm is only useful for sufficiently small time steps. As the size of the time step is decreased, the approximation converges to the analytical solution.
+We see by inspection that this algorithm is only useful for sufficiently small time steps. As the size of the time step is decreased, the approximation converges to the analytical solution as expected.
 
 
 
