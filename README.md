@@ -100,5 +100,6 @@ Stiff systems
 3. https://fncbook.github.io/fnc/ivp/overview.html
 4. https://innovationspace.ansys.com/courses/wp-content/uploads/sites/5/2021/02/Lesson2_ImplicitAndExplicitTimeIntegration-1.pdf
 5. https://qucs.sourceforge.net/tech/node24.html
-6. This
-7. Bryngelson, S. H., & Freund, J. B. (2018). Global stability of flowing red blood cell trains. Physical Review Fluids, 3(7). https://doi.org/10.1103/physrevfluids.3.073101 
+6. http://www.scholarpedia.org/article/Initial_value_problems
+7. http://www.scholarpedia.org/article/Numerical_methods#Numerical_solution_of_differential_and_integral_equations
+8. Bryngelson, S. H., & Freund, J. B. (2018). Global stability of flowing red blood cell trains. Physical Review Fluids, 3(7). https://doi.org/10.1103/physrevfluids.3.073101 
