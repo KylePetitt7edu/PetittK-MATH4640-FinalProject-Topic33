@@ -27,31 +27,25 @@ $$\frac{dx}{dt} = f(x(t),t)$$
 
 over the interval 
 
-$t /in [a,b]$
+$t \in [a,b]$
 
 where the interval $h$, this can be defined as
 
 $$h = \frac{b-a}{n}$$
 
-where $n$ is the integer number of subintervals in the interval $[a,b]$. We can then approximate the given ODE as
+where $n$ is the integer number of subintervals in the interval $[a,b]$. The given ODE can then be approximated as
 
-$$\left\space \frac{dx}{dt} \right\vert_{x=x_i} = \frac{x_{i+1}-x_i}{t_{i+1}-t_i} = \frac{x_{i+1}-x_i}{h}$$
+$$\frac{dx}{dt} \vert_{x=x_i} \approx \frac{x_{i+1}-x_i}{t_{i+1}-t_i} = \frac{x_{i+1}-x_i}{h}$$
 
-$$\Delta x \approx -0.4x\Delta t$$
+and rewritten as
 
-which is equvalent to
+$$\frac{x_{i+1}-x_i}{h} \approx f(x_i,t_i)$$
 
-$$\Delta x \approx \dot{x}\Delta t$$
+and simplified to its final explicit form
 
-This gives the approximate change in $x$ per time step $\Delta t$, so the next state of the system can be computed directly. The next state and is thus approximately
+$$x_{i+1} \approx hf(x_i,t_i)+x_i$$
 
-$$x(t+\Delta t) \approx x(t)+\Delta x$$
-
-which is equvalent to our final form
-
-$$x(t+\Delta) \approx \frac{dx}{dt}\Delta t + x(t)$$
-
-which is Forward Euler's integration. Note that this method depends heavily on the size of $\Delta t$, which is chosen by the user. Intuitively, as the size of $\Delta t$ is decreased, the accuracy of the approximation increases, which will be discussed later. Unfortunately this increase in accuracy, has a side-effect, a direct increase in run time.
+which is known as Forward Euler's integration. Note that this method depends heavily on the size of $h$, which is chosen by the user. Intuitively, as the size of $h$ is decreased to 0, the accuracy of the approximation approaches the exact solution, which will be discussed later. Unfortunately this increase in accuracy, has a side-effect, a direct increase in run time.
 
 XXX Derivation of implicit method
 
