@@ -5,10 +5,12 @@ Title: Accuracy and Stability of Different Types of Time-Stepping Methods
 ----
 
 # Accuracy and Stability of Different Types of Time-Stepping Methods
-In numerical analysis, time-stepping methods are one of the most fundamental forms of numerical integration. These methods are commonly used to integrate time-dependent ordinary differential equations (ODEs) and partial differential equations (PDEs) [CITATION]. They are approximate methods that are dependent on user parameters and model properties, but can be used to approximate the behavior of a variety of systems with high fidelity if applied correctly. They are especially useful for integrating systems with no analytical solution, and are often used in industry and research, and as such, the accuracy and stability of these methods are paramount. This wiki will serve to provide an introduction to the accuracy and stability of such methods, but a more in-depth study is left to the reader. Only first-order, ordinary differential equation with given initial conditions, known as initial-value problems (IVPs), will be discussed directly, although these methods can be applied to higher order systems and a range of conditions.
+In numerical analysis, time-stepping methods are one of the most fundamental forms of numerical integration. These methods are commonly used to integrate time-dependent ordinary differential equations (ODEs) and partial differential equations (PDEs) [CITATION]. They are approximate methods that are dependent on user parameters and model properties, but can be used to approximate the behavior of a variety of systems with high fidelity if applied correctly. They are especially useful for integrating systems with no analytical solution, and are often used in industry and research. As such, the accuracy and stability of these methods are paramount. This wiki will serve to provide an introduction to the accuracy and stability of such methods, but a more in-depth study is left to the reader. Only first-order, ordinary differential equation with given initial conditions, known as initial-value problems (IVPs), will be discussed directly, although these methods can be applied to higher order systems and a range of conditions.
 
 ## Background
-These numerical methods are seperated into two primary categories, explicit and implicit. Explicit methods approximate the state of the system at a later time based off of the state of the system at the current time. Given the differential equation and an initial condition, the algorithm can compute the next system-state over and over one step at a time. This is also commonly referred to as "time-marching." The algorithm is commonly written as 
+The Existence an Uniqueness Theorem states that the solution to an IVP, $f$, exists and is unique over a specified internal if $f$ is continuous and differentiable over that interval [9]. This is key for numerical methods because it guarantees an exact solution under these conditions. This also allows the error of an approximation to be computable and allows for the determination of stability [10].
+
+Numerical methods for IVPs are seperated into two primary categories, explicit and implicit. Explicit methods approximate the state of the system at a later time based off of the state of the system at the current time. Given the differential equation and an initial condition, the algorithm can compute the next system-state over and over one step at a time. This is also commonly referred to as "time-marching." The algorithm is commonly written as 
 
 $$x(t+\Delta t) = F(x(t))$$
 
@@ -19,12 +21,6 @@ Implicit methods, on the other hand, look to find the next system-state by solvi
 $$G(x(t),x(t+\Delta t)) = 0$$
 
 The numerical methods commonly neeeded to solve for $x(t+\Delta t)$ add an additional and often expensive step to the process. This may seem like a roundabout way to find the next system state when compared to explicit methods, but the implicit method has its merits which will be discussed in subsequent sections. Other examples of implicit methods include implicit Runge-Kutta and the trapezoidal method.
-
-Having methods for solving otherwise unsolveable problems is a powerful tool, but the question remains: how accurate are these approximations, and how stable?
-
-To estimate the error of the approximation, forward error analysis is used to examine the errors that occur in implementing a numerical method [7]. Similarly, backwards error analysis can be used to show that an approximated value is the exact solution of some initial value plus some perturbation.
-
-The concept of stability refers to the sensitivity of the solution of a given problem to small perturbations in inputs such as data or parameters [7]. The problem can be sensitive becauase the system itself is very sensitive to changes in input, which is commonly described ill-conditioned, or the problem can be unstable because of how a  numerical method is applied to it. Certain methods are more stable than others, and ideally, a numerical method should never introduce  additional sensitivity to a problem.
 
 ## Derivation of Basic Explicit and Implicit Methods
 To understand these numerical methods' strengths and differences a bit better, the derivations are key. First, the simplest form of the explicit method using a first-order, ordinary differential equation of form
@@ -63,11 +59,30 @@ $$f(x_{i+1},t_{i+1})h + x_i - x_{i+1} = 0$$
 
 where $t_{i+1}$, $x_i$, and $h$ are all known, and $x_{i+1}$ is still unknown. This is often called Backward Euler Method. Depending on $f$, this can be a really ugly, nonlinear equation and may require numerical methods to find the zero to find x{i+1}.
 
-## Accuracy
-
+Having methods for solving otherwise unsolveable problems is a powerful tool, but the question remains: how accurate are these approximations, and how stable?
 
 ## Stability
+The concept of stability refers to the sensitivity of the solution of a given problem to small perturbations in inputs such as data or parameters [7]. The problem can be sensitive for two reasons, because the system itself is fundamentally sensitive to changes in input, which is commonly described ill-conditioned, or the problem can be ill-conditioned because of how a  numerical method is applied to it. Certain methods are more stable than others, and ideally, a numerical method shouldn't introduce  additional sensitivity to a problem.
+
+In using explecit methods to solve an IVP, the next step, $t_{i+1}$, is approximated based on information from the previous step, $t_i$. Some error may be introduced here depending on the problem at hand. Worse, this error is incorporated into the computation of the next step leading to errors being propagated through during the solution process.
+
+Given an IVP
+
+$$\dot{u} = f(t,u), \space \space u{t_i} = y_i$$
+
+where $u$ is the solution and $y$ is the approximation. At each step, the local error can be calculated as
+
+err = u(t_i) - y(t_i)
+
+$$x(t_{i+1})-x{i+1} = []$$
+
+
+pg14
+
 Implicit is unconditionally stable
+
+## Accuracy
+To estimate the error of the approximation, forward error analysis is used to examine the errors that occur in implementing a numerical method [7]. Similarly, backwards error analysis can be used to show that an approximated value is the exact solution of some initial value plus some perturbation.
 
 ## Derivation ??
 
@@ -110,4 +125,7 @@ Stiff systems
 5. https://qucs.sourceforge.net/tech/node24.html
 6. http://www.scholarpedia.org/article/Initial_value_problems
 7. http://www.scholarpedia.org/article/Numerical_methods#Numerical_solution_of_differential_and_integral_equations
-8. Bryngelson, S. H., & Freund, J. B. (2018). Global stability of flowing red blood cell trains. Physical Review Fluids, 3(7). https://doi.org/10.1103/physrevfluids.3.073101 
+8. https://web.p.ebscohost.com/ehost/detail/detail?vid=0&sid=89723f7f-8a2b-498a-9314-98035c5a8fab%40redis&bdata=JkF1dGhUeXBlPWlwLHNoaWImc2l0ZT1laG9zdC1saXZlJnNjb3BlPXNpdGU%3d#db=e000xna&AN=125134
+9. https://en.wikipedia.org/wiki/Picard%E2%80%93Lindel%C3%B6f_theorem
+10. Textbook
+11. Bryngelson, S. H., & Freund, J. B. (2018). Global stability of flowing red blood cell trains. Physical Review Fluids, 3(7). https://doi.org/10.1103/physrevfluids.3.073101 
