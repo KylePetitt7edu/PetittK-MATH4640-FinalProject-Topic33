@@ -31,7 +31,7 @@ over the interval
 
 $$t \in [a,b]$$
 
-where the interval $h$, this can be defined as
+where the step size $h$, this can be defined as
 
 $$h = \frac{b-a}{n}$$
 
