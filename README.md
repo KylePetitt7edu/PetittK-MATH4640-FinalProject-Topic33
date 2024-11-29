@@ -48,7 +48,7 @@ This can then be simplified to its final, explicit form
 
 $$x_{i+1} \approx hf(x_i,t_i)+x_i$$
 
-which is known as Forward Euler's integration. Note that this method depends heavily on the size of $h$, which is chosen by the user. Intuitively, as the size of $h$ is decreased to 0, representing infinite $n$ intervals, the accuracy of the approximation approaches the exact solution. Unfortunately this increase in accuracy, has a side-effect, a direct increase in run time, which will be discussed later.
+which is known as Forward Euler's integration. Note that this method depends heavily on the size of $h$, which is chosen by the user. Intuitively, as the size of $h$ is decreased to 0, representing infinite $n$ intervals, the accuracy of the approximation approaches the exact solution. Unfortunately this increase in accuracy, has a side-effect, a direct increase in run time, which will be discussed [later](practical-use).
 
 The implicit method can be derived similarly given the same function. The first few steps are exactly with the exception that the slope, $f$, is a function of $f(x_{i+1},t_{i+1})$ instead of $f(x_{i},t_{i})$.
 
@@ -127,7 +127,7 @@ Stiff systems are diffifult to define[11], but loosely, they converge to a stead
 textbook pg400, pg453
 
 
-## Preferred Methods
+## Practical Use
 
 
 ## Implicit-Explicit Method (IMEX)
