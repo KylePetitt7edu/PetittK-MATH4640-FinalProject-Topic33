@@ -146,7 +146,15 @@ Stiff systems are diffifult to define [11], but loosely, they converge to a stea
 
 
 ## Practical Use
-Runge-Kutta [3] [6]
+Thus far the discussion has focused primarily on the theory of basic numerical methods in their basic form, and how to determine key properties such as stability and accuracy. This section looks to discuss stability and accuracy for practical use, and more advanced methods of numerical integration such as Runge-Kutta methods and IMEX.
+
+IMEX methods are methods that combine implicit and explicit methods, taking advantage of both of their strengths. One such IMEX method is the Crank-Nicolson method which computes the next step by averaging the Forward Euler and Backwards Euler outputs [13]. By combining these methods, it is more accurate than backwards Euler, while maintaining its unconditional stability and being approximately the same computational run time.
+
+Probably the most widely used numerical method are Runge-Kutta methods [3]. They are one step methods that evaluate the ODE function, $f$, multiple times per time step. Where the Euler method only uses the first two terms of the Taylor expansion when approximating $u_{i+1}$, Runge-Kutta methods use the first 3 terms. This is done by approximating the second derivative as
+
+$$\ddot{u}(x,t) \ approx \dot{f}(x,t) = \frac{\partial f}{\partial t} + \frac{\partial f}{\partial u}\frac{du}{dt}$$
+
+[6]
 
 IMEX
 
@@ -171,3 +179,4 @@ It is not expensive to estimate local error, so it is common practice to track l
 10. Textbook *
 11. http://www.scholarpedia.org/article/Stiff_systems
 12. https://ntrs.nasa.gov/api/citations/19890015285/downloads/19890015285.pdf
+13. https://en.wikipedia.org/wiki/Crank%E2%80%93Nicolson_method
