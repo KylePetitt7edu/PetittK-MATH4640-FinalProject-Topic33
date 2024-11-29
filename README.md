@@ -10,11 +10,11 @@ In numerical analysis, time-stepping methods are one of the most fundamental for
 ## Background
 The Existence an Uniqueness Theorem states that the solution to an IVP, $f$, exists and is unique over a specified internal if $f$ is continuous and differentiable over that interval [9]. This is key for numerical methods because it guarantees an exact solution under these conditions. This also allows the error of an approximation to be computable and allows for the determination of stability [10].
 
-Numerical methods for IVPs are seperated into two primary categories, explicit and implicit. Explicit methods approximate the state of the system at a later time based off of the state of the system at the current time. Given the differential equation and an initial condition, the algorithm can compute the next system-state over and over one step at a time. This is also commonly referred to as "time-marching." The algorithm is commonly written as 
+Numerical methods for IVPs are seperated into two primary categories, explicit and implicit [4]. Explicit methods approximate the state of the system at a later time based off of the state of the system at the current time. Given the differential equation and an initial condition, the algorithm can compute the next system-state over and over one step at a time. This is also commonly referred to as "time-marching." The algorithm is commonly written as 
 
 $$x(t+\Delta t) = F(x(t))$$
 
-where the function $F$ can be calculated explicitly ([example shown later](#derivation-of-basic-explicit-and-implicit-methods)) and $x_i$ is known from the given initial condition or the previous time step computation. Since all of the terms on the right side of the equation are known, the next system-state can be directly computed. The most simple simple form of explicit methods is Forward Euler Integration, but there are many other techniques such as explicit Runge-Kutta and the Adams-Bashford Algorithm [4].
+where the function $F$ can be calculated explicitly ([example shown later](#derivation-of-basic-explicit-and-implicit-methods)) and $x_i$ is known from the given initial condition or the previous time step computation. Since all of the terms on the right side of the equation are known, the next system-state can be directly computed. The most simple simple form of explicit methods is Forward Euler Integration, but there are many other techniques such as explicit Runge-Kutta and the Adams-Bashford Algorithm [5].
 
 Implicit methods, on the other hand, look to find the next system-state by solving an equation using the current state and a future, unknown state(s). In most cases, iterative, numerical methods are required to solve for the unknown state as these functions are usually nonlinear in nature and cannot be solved explicitly. This algorithm is typically written as 
 
@@ -50,7 +50,7 @@ $$x_{i+1} \approx hf(x_i,t_i)+x_i$$
 
 which is known as Forward Euler's integration. Note that this method depends heavily on the size of $h$, which is chosen by the user. Intuitively, as the size of $h$ is decreased to 0, representing infinite $n$ intervals, the accuracy of the approximation approaches the exact solution. Unfortunately this increase in accuracy, has a side-effect, a direct increase in run time, which will be discussed [later](practical-use).
 
-The implicit method can be derived similarly given the same function. The first few steps are exactly the same with the exception that the slope, $f$, is a function of $f(x_{i+1},t_{i+1})$ instead of $f(x_{i},t_{i})$.
+The implicit method can be derived similarly given the same function. The first few steps are exactly the same with the exception that the slope, $f$, is a function of $f(x_{i+1},t_{i+1})$ instead of $f(x_{i},t_{i})$ [2].
 
 $$\frac{x_{i+1}-x_i}{h} \approx f(x_{i+1},t_{i+1})$$
 
@@ -142,15 +142,15 @@ We see that this algorithm is only qualitatively accurate for sufficiently small
 
 
 ## Stiff Systems
-Stiff systems are diffifult to define[11], but loosely, they converge to a steady state very quickly compared to the timescale of the interval of integration $x\in[a,b]$ [8]. Stiff systems are very well-conditioned [6], but due to the nature of their stiffness, they require arbitrarily small step sizes when using explicit methods. For any reasonable step size, the integration method is ill-conditioned. For this reason implicit methods are typically preferred for stiff systems. Recall that implicit methods are unconditionally stable. Generally, it is much faster to compute one step using an explicit method than an implicit method, but for the same amount of error, the step size is significantly smaller for the explicit method. Thus, it is faster to compute using an implicit method. Explicit methods can be used for stiff problems, but it is impractical to use a constant step size when integrating. 
+Stiff systems are diffifult to define [11], but loosely, they converge to a steady state very quickly compared to the timescale of the interval of integration $x\in[a,b]$ [8]. Stiff systems are very well-conditioned [6], but due to the nature of their stiffness, they require arbitrarily small step sizes when using explicit methods. For any reasonable step size, the integration method is ill-conditioned. For this reason implicit methods are typically preferred for stiff systems. Recall that implicit methods are unconditionally stable. Generally, it is much faster to compute one step using an explicit method than an implicit method, but for the same amount of error, the step size is significantly smaller for the explicit method. Thus, it is faster to compute using an implicit method. Explicit methods can be used for stiff problems, but it is impractical to use a constant step size when integrating. 
 
 
 ## Practical Use
-Runge-Kutta
+Runge-Kutta [3] [6]
 
 IMEX
 
-managing local error
+managing local error [10] [6]
 
 It is not expensive to estimate local error, so it is common practice to track local error. This is useful because then we can vary step size throughout the solution and not have to run the smallest step size for the entire interval [8,pg48]. This is especially useful for stiff problems where an explicit method would typically be very expensive.
 
@@ -160,15 +160,14 @@ It is not expensive to estimate local error, so it is common practice to track l
 
 ## References
 1. https://en.wikipedia.org/wiki/Explicit_and_implicit_methods
-2. https://www.fidelisfea.com/post/time-integration-methods-for-implicit-and-explicit-fea-what-are-they-and-how-do-they-work
-3. https://fncbook.github.io/fnc/ivp/overview.html
+2. https://www.fidelisfea.com/post/time-integration-methods-for-implicit-and-explicit-fea-what-are-they-and-how-do-they-work 
+3. https://fncbook.github.io/fnc/ivp/overview.html *
 4. https://innovationspace.ansys.com/courses/wp-content/uploads/sites/5/2021/02/Lesson2_ImplicitAndExplicitTimeIntegration-1.pdf
 5. https://qucs.sourceforge.net/tech/node24.html
 6. http://www.scholarpedia.org/article/Initial_value_problems
 7. http://www.scholarpedia.org/article/Numerical_methods#Numerical_solution_of_differential_and_integral_equations
 8. https://web.p.ebscohost.com/ehost/detail/detail?vid=0&sid=89723f7f-8a2b-498a-9314-98035c5a8fab%40redis&bdata=JkF1dGhUeXBlPWlwLHNoaWImc2l0ZT1laG9zdC1saXZlJnNjb3BlPXNpdGU%3d#db=e000xna&AN=125134
 9. https://en.wikipedia.org/wiki/Picard%E2%80%93Lindel%C3%B6f_theorem
-10. Textbook
+10. Textbook *
 11. http://www.scholarpedia.org/article/Stiff_systems
 12. https://ntrs.nasa.gov/api/citations/19890015285/downloads/19890015285.pdf
-13. Bryngelson, S. H., & Freund, J. B. (2018). Global stability of flowing red blood cell trains. Physical Review Fluids, 3(7). https://doi.org/10.1103/physrevfluids.3.073101 
