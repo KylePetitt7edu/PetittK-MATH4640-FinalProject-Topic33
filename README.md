@@ -78,7 +78,7 @@ and the global error can be calculated as
 
 $$err_g = y(t_{i})-y_{i}$$
 
-Note that in the implicit method, the maximum local error is controlled by some tolerance value chosen by the user, limiting the global error indirectly [8]. The propagation of error can then be analyzed using using 
+Note that in the implicit method, the maximum local error is controlled by some tolerance value chosen by the user, limiting the global error indirectly [8]. The propagation of error can then be analyzed using  
 
 $$y(t_{i})-y{i} = [u(t_{i})-y_{i}] + [y(t_i)-u(t_i)]$$
 
@@ -117,8 +117,10 @@ We see by inspection that this algorithm is only accurate for sufficiently small
 
 ## "Why they are what they are"
 
-## Fringe Cases
-Stiff systems
+## Stiff Cases
+Stiff systems are very stable. They converge to a steady equilibrium very quickly compared to the length of the interval of integration $x\in[a,b]$ [8]. Implicit methods are typically preferred for stiff systems because explicit methods require an arbitrarily small step size, $h$.
+
+textbook pg400, pg453
 
 ## Implicit-Explicit Method (IMEX)
 
