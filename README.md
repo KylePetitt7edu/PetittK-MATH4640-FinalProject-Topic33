@@ -57,7 +57,7 @@ Following similar steps, the equation can be simplified to
 
 $$f(x_{i+1},t_{i+1})h + x_i - x_{i+1} = 0$$
 
-where $t_{i+1}$, $x_i$, and $h$ are all known, and $x_{i+1}$ is still unknown. This is often called Backward Euler Method. Depending on $f$, this can be a really ugly, nonlinear equation and may require numerical methods to find the zero to find x_{i+1}. Note that it would take infinite iterations to find the exact zero, so the user is responsible for setting some acceptable tolerance value close to zero to approximate x_{i+1}. Forward and Backward Euler are both considered one-step methods because XXX
+where $t_{i+1}$, $x_i$, and $h$ are all known, and $x_{i+1}$ is still unknown. This is often called Backward Euler Method. Depending on $f$, this can be a really ugly, nonlinear equation and may require numerical methods to find the zero to find x_{i+1}. Note that it would take infinite iterations to find the exact zero, so the user is responsible for setting some acceptable tolerance value close to zero to approximate x_{i+1}. Forward and Backward Euler are both considered one-step methods because they only rely on information from the previous step to calculate the next.
 
 Having methods for solving otherwise unsolveable problems is a powerful tool, but the question remains: how accurate are these approximations, and how stable?
 
