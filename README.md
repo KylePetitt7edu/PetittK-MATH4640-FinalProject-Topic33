@@ -154,19 +154,21 @@ Probably the most widely used numerical method are Runge-Kutta methods [3]. They
 
 $$\ddot{u}(x,t) \approx \dot{f}(x,t) = \frac{\partial f}{\partial t} + \frac{\partial f}{\partial u}\frac{du}{dt}$$
 
-These partial derivatives must be approximiated to complete the calculation. There are several ways to do this produce a whole class of methods, i.e. the Runge-Kutta methods. This is done through multiple stages where values of $f$ are calculated using interpolated values of $t$. The number of interpolated values defines the number of stages and the order of the method. For example, fourth order Runge-Kutta uses
+These partial derivatives must be approximiated to complete the calculation. There are several ways to do this produce a whole class of methods, i.e. the Runge-Kutta methods. This is done through multiple stages where values of $f$ are calculated using interpolated values of $t$ and weighted using coefficients determined by the method order. The number of interpolated values defines the number of stages and the order of the method. For example, fourth order Runge-Kutta uses
 
 $$k_1 = hf(t_i,u_i)$$
-$$k_2 = hf(t_i+\frac{h}{2},u_i+\frac{k_1}{2})$$
-$$k_3 = hf(t_i+\frac{h}{2},u_i+\frac{k_2}{2})$$
+$$k_2 = hf\left(t_i+\frac{h}{2},u_i+\frac{k_1}{2}\right)$$
+$$k_3 = hf\left(t_i+\frac{h}{2},u_i+\frac{k_2}{2}\right)$$
 $$k_4 = hf(t_i+h,u_i+k_3)$$
 $$u_{i+1} = u_i + \frac{(k_1+2k_2+2k_3+k_4)}{6}$$
 
-By incorporating this second order term, the local error is decreased to $\mathcal{O}(h^{3})dx$. Runge-Kutta methods are a family
+By incorporating this second order term using several stages, the local error is decreased to $\mathcal{O}(h^{3})dx$. This alone should be proof that the extra work is worth the benfits. Implicit Runge-Kutta methods can also be implementesd
 
 [6]
 
-IMEX
+Numerical methods are a balancing act of accuracy and efficiency. It is important that results be accurate enough to be useful, but if they are too useful, the computational run time may become too expensive to be worthwhile. Implicit methods are more computationally expensive than explicit methods and are often unnecessary for most problems. They guarantee stability, but the resources needed for the root-finding step are so expensive they can't compete with explicit methods. However, [Stiff systems](#stiff-systems) are a great counter-example of this. To make explicit methods accurate enough to effectively solve a stiff system, an extremely small time step is needed to maintain stability and accuracy. Implicit methods are then required because of their unconditional stability. They are more computationally expensive per step, but overall they are less computationally expensive to achieve the same accuracy because they don't need such small time steps. Similarly, fourth order Runge-Kutta methods require more steps than Forward Euler, but the gains in accuracy make it worth it. Runge-Kutta can also be applied using a higher order, but increasing the order increases the accuracy less and less as the order increases. Eventually, the computational time required to compute more terms begins to outweigh the gains achieved in accuracy. This sweet spot is typically around fourth order [3]. 
+
+
 
 managing local error [10] [6]
 
