@@ -110,7 +110,7 @@ $$f(x)-P(x) = \mathcal{O}(h^s)$$
 
 The estimated error can then be computed by taking the integral [8]. 
 
-$$\int_{t_i}^{t_i+h}f(x)dx \approx $$\int_{t_i}^{t_i+h}P(x)dx + \mathcal{O}(h^{s+1})$$
+$$\int_{t_i}^{t_i+h}f(x)dx \approx \int_{t_i}^{t_i+h}P(x)dx + \mathcal{O}(h^{s+1})$$
 
 Applying the Forward and Backwards Euler methods to this relationship yields the magnitude of the local error for these methods is 
 
