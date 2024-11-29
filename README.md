@@ -58,7 +58,7 @@ Following similar steps, the equation can be simplified to
 
 $$f(x_{i+1},t_{i+1})h + x_i - x_{i+1} = 0$$
 
-where $t_{i+1}$, $x_i$, and $h$ are all known, and $x_{i+1}$ is still unknown. This is often called Backward Euler Method. Depending on $f$, this can be a really ugly, nonlinear equation and may require numerical methods to find the zero that yields the desired $x_{i+1}$. Note that it would take infinite iterations to find the exact zero, so the user is responsible for setting some acceptable tolerance value close to zero to approximate x_{i+1}. Smaller tolerances yield more accurate results but require a longer run time. Forward and Backward Euler are both considered one-step methods because they only rely on information from the previous step to calculate the next.
+where $t_{i+1}$, $x_i$, and $h$ are all known, and $x_{i+1}$ is still unknown. This is often called Backward Euler Method. Depending on $f$, this can be a really ugly, nonlinear equation and may require numerical methods to find the zero that yields the desired $x_{i+1}$. Note that it would take infinite iterations to find the exact zero, so the user is responsible for setting some acceptable tolerance value close to zero to approximate $x_{i+1}$. Smaller tolerances yield more accurate results but require a longer computational run time. Forward and Backward Euler are both considered one-step methods because they only rely on information from the previous step to calculate the next.
 
 Having methods for solving otherwise unsolveable problems is a powerful tool, but the question remains: how accurate are these approximations, and how stable?
 
@@ -84,11 +84,11 @@ Note that in the implicit method, the maximum local error is controlled by some 
 
 $$y(t_{i})-y{i} = [u(t_{i})-y_{i}] + [y(t_i)-u(t_i)]$$
 
-where the first bracketed term is the local error, controlled by the user [8], and the second bracketed term is the difference in the two solutions of the ODE at $t_i$. Control of local error is an extremely important part of selecting a numerical method. Withour a reasonable local error, the results are essentially meaningless. How to properly manage local error will be further discussed in the [practical use](#practical-use) section. For explicit methods, local error can be controlled by manipulating the step size $h$. Recall that this has direct implications on computational run time. Implicit on the other hand has its local error controlled by the tolerance value used to root find $y_{i+1}$, and as such they are unconditionally stable [12]. This means regardless of the step size, implicit methods are stable. This becomes very important when dealing with [stiff systems](#stiff-systems), which will be discussed later. This second term is a property of the ODE and is often referred to as the true error [8]. If the IVP is stable, the true error will be comparable in magnitude to the local error. If the IVP is unstable, the true error will grow regardless of the size of the local errors. Note this happens regardless of the numerical method, but using methods with lower local error can delay the rate of divergence from the true solution.
+where the first bracketed term is the local error, controlled by the user [8], and the second bracketed term is the difference in the two solutions of the ODE at $t_i$. Control of local error is an extremely important part of selecting a numerical method. Without a reasonable local error, the results are essentially meaningless. How to properly manage local error will be further discussed in the [practical use](#practical-use) section. For explicit and implicit methods, local error can be controlled by manipulating the step size $h$. Recall that this has direct implications on computational run time. Implicit methods do have the additional benefitof partiall having their local error controlled by the tolerance value used to root find $y_{i+1}$, and as such they are unconditionally stable [12]. This means regardless of the step size, implicit methods are stable. This becomes very important when dealing with [stiff systems](#stiff-systems), which will be discussed later. The second bracketed term above is a property of the ODE and is often referred to as the true error [8]. If the IVP is stable, the true error will be comparable in magnitude to the local error for all time. If the IVP is unstable, the true error will grow regardless of the size of the local errors. Note this happens regardless of the numerical method, but using methods with lower local error can delay the rate of divergence from the true solution.
 
 
 ## Accuracy and Error Estimation
-Error estimation is key to understanding how well the approximation will match system behaviour. To estimate error for one-step methods, the approximation is simply compared to the definite integral over the interval. The numerical methods discussed have form
+Error estimation is key to understanding how well the approximation will match system behaviour. To estimate error for one-step methods, the approximation is simply compared to the definite integral over the interval. Typically, the definite integral cannot be calculated explicitly as $f$ is unknown, making it impossible to calculate the exact error of a numerical method, however, the error of individual methods can be estimated based off of known parameters. The numerical methods discussed thus far have form
 
 $$u(t_i+h) = y_i + \int_{t_i}^{t_i+h}f(x)dx$$
 
@@ -100,7 +100,7 @@ and for backwards Euler
 
 $$\int_{t_i}^{t_i+h}f(x)dx \approx hf(t_{i+1}) = P(x)$$
 
-Using polynimial interpolation theory, given that $P$ is the unique polynomial of degree less than $s$ that approximates $f$ with a smooth interpolating function with $s$ distinct nodes, then there exists some value $C$ such that
+Using polynimial interpolation theory [8], given that $P$ is the unique polynomial of degree less than $s$ that approximates $f$ with a smooth interpolating function with $s$ distinct nodes, then there exists some value $C$ such that
 
 $$\left|f(x) - p(x)\right| \le Ch^s$$
 
@@ -108,15 +108,15 @@ for all $x\in[t_i,t_i+h]$ yielding
 
 $$f(x)-P(x) = \mathcal{O}(h^s)$$
 
-The estimated error can then be computed by taking the integral [8]. 
+The estimated error of a numerical method can then be computed by taking the integral [8]. 
 
 $$\int_{t_i}^{t_i+h}f(x)dx \approx \int_{t_i}^{t_i+h}P(x)dx + \mathcal{O}(h^{s+1})$$
 
-Applying the Forward and Backwards Euler methods to this relationship yields the magnitude of the local error for these methods is 
+Applying the Forward and Backwards Euler methods to this relationship yields that the magnitude of the local error for these methods is 
 
 $$u(t_i+h) - y_{i+1} = \mathcal{O}(h^{2})dx$$
 
-This shows the direct dependence of local error on step size. The error of other methods can be computed similary using the method shown. As one might expect, the simple, one-step Euler methods are less accurate than the more complicated algorithms. By how much will be discussed [later](#practical-use).
+This shows the direct dependence of local error on step size, and that it is quadratic in nature. The error of other methods can be computed similary using the method shown. As one might expect, the simple, one-step Euler methods are less accurate locally than the more complicated, widely used algorithms. By how much will be discussed [later](#practical-use).
 
 
 ## Example and Sample Code
@@ -150,6 +150,8 @@ textbook pg400, pg453
 Runge-Kutta
 
 IMEX
+
+managing local error
 
 It is not expensive to estimate local error, so it is common practice to track local error. This is useful because then we can vary step size throughout the solution and not have to run the smallest step size for the entire interval [8,pg48]. This is especially useful for stiff problems where an explicit method would typically be very expensive.
 
