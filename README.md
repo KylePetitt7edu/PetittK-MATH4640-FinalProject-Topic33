@@ -150,9 +150,19 @@ Thus far the discussion has focused primarily on the theory of basic numerical m
 
 IMEX methods are methods that combine implicit and explicit methods, taking advantage of both of their strengths. One such IMEX method is the Crank-Nicolson method which computes the next step by averaging the Forward Euler and Backwards Euler outputs [13]. By combining these methods, it is more accurate than backwards Euler, while maintaining its unconditional stability and being approximately the same computational run time.
 
-Probably the most widely used numerical method are Runge-Kutta methods [3]. They are one step methods that evaluate the ODE function, $f$, multiple times per time step. Where the Euler method only uses the first two terms of the Taylor expansion when approximating $u_{i+1}$, Runge-Kutta methods use the first 3 terms. This is done by approximating the second derivative as
+Probably the most widely used numerical method are Runge-Kutta methods [3]. They are multi-stage methods that evaluate the ODE function, $f$, multiple times per time step. Where the Euler method only uses the first two terms of the Taylor expansion when approximating $u_{i+1}$, Runge-Kutta methods use the first three terms. This is done by approximating the second derivative as
 
-$$\ddot{u}(x,t) \ approx \dot{f}(x,t) = \frac{\partial f}{\partial t} + \frac{\partial f}{\partial u}\frac{du}{dt}$$
+$$\ddot{u}(x,t) \approx \dot{f}(x,t) = \frac{\partial f}{\partial t} + \frac{\partial f}{\partial u}\frac{du}{dt}$$
+
+These partial derivatives must be approximiated to complete the calculation. There are several ways to do this produce a whole class of methods, i.e. the Runge-Kutta methods. This is done through multiple stages where values of $f$ are calculated using interpolated values of $t$. The number of interpolated values defines the number of stages and the order of the method. For example, fourth order Runge-Kutta uses
+
+$$k_1 = hf(t_i,u_i)$$
+$$k_2 = hf(t_i+\frac{h}{2},u_i+\frac{k_1}{2})$$
+$$k_3 = hf(t_i+\frac{h}{2},u_i+\frac{k_2}{2})$$
+$$k_4 = hf(t_i+h,u_i+k_3)$$
+$$u_{i+1} = u_i + \frac{(k_1+2k_2+2k_3+k_4)}{6}$$
+
+By incorporating this second order term, the local error is decreased to $\mathcal{O}(h^{3})dx$. Runge-Kutta methods are a family
 
 [6]
 
