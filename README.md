@@ -5,7 +5,7 @@ Title: Accuracy and Stability of Different Types of Time-Stepping Methods
 ----
 
 # Accuracy and Stability of Different Types of Time-Stepping Methods
-In numerical analysis, time-stepping methods are one of the most fundamental forms of numerical integration. These methods are commonly used to integrate time-dependent ordinary differential equations (ODEs) and partial differential equations (PDEs) [CITATION]. They are approximate methods that are dependent on user parameters and model properties, but can be used to approximate the behavior of a variety of systems with high fidelity if applied correctly. They are especially useful for integrating systems with no analytical solution, and are often used in industry and research. As such, the accuracy and stability of these methods are paramount. This wiki will serve to provide an introduction to the accuracy and stability of such methods, but a more in-depth study is left to the reader. Only first-order, ordinary differential equation with given initial conditions, known as initial-value problems (IVPs), will be discussed directly, although these methods can be applied to higher order systems and a range of conditions.
+In numerical analysis, time-stepping methods are one of the most fundamental forms of numerical integration. These methods are commonly used to integrate time-dependent ordinary differential equations (ODEs) and partial differential equations (PDEs) [1]. They are approximate methods that are dependent on user parameters and model properties, but can be used to approximate the behavior of a variety of systems with high fidelity if applied correctly. They are especially useful for integrating systems with no analytical solution, and are often used in industry and research. As such, the accuracy and stability of these methods are paramount. This wiki will serve to provide an introduction to the accuracy and stability of such methods, but a more in-depth study is left to the reader. Only first-order, ordinary differential equation with given initial conditions, known as initial-value problems (IVPs), will be discussed directly in detail, although these methods can be applied to higher order systems and a range of conditions.
 
 ## Background
 The Existence an Uniqueness Theorem states that the solution to an IVP, $f$, exists and is unique over a specified internal if $f$ is continuous and differentiable over that interval [9]. This is key for numerical methods because it guarantees an exact solution under these conditions. This also allows the error of an approximation to be computable and allows for the determination of stability [10].
@@ -21,6 +21,7 @@ Implicit methods, on the other hand, look to find the next system-state by solvi
 $$G(x(t),x(t+\Delta t)) = 0$$
 
 The numerical methods commonly neeeded to solve for $x(t+\Delta t)$ add an additional and often expensive step to the process. This may seem like a roundabout way to find the next system state when compared to explicit methods, but the implicit method has its merits which will be discussed in subsequent sections. Other examples of implicit methods include implicit Runge-Kutta and the trapezoidal method.
+
 
 ## Derivation of Basic Explicit and Implicit Methods
 To understand these numerical methods' strengths and differences a bit better, the derivations are key. First, the simplest form of the explicit method using a first-order, ordinary differential equation of form
@@ -39,7 +40,7 @@ and $n$ is the integer number of subintervals in the interval $[a,b]$. The given
 
 $$\frac{dx_i}{dt_i} \approx \frac{x_{i+1}-x_i}{t_{i+1}-t_i} = \frac{x_{i+1}-x_i}{h}$$
 
-for a particular time $t_i$, and rewritten as
+for a particular time $t_i$ using a finite difference approximation, and rewritten as
 
 $$\frac{x_{i+1}-x_i}{h} \approx f(x_i,t_i)$$
 
@@ -57,14 +58,15 @@ Following similar steps, the equation can be simplified to
 
 $$f(x_{i+1},t_{i+1})h + x_i - x_{i+1} = 0$$
 
-where $t_{i+1}$, $x_i$, and $h$ are all known, and $x_{i+1}$ is still unknown. This is often called Backward Euler Method. Depending on $f$, this can be a really ugly, nonlinear equation and may require numerical methods to find the zero to find x_{i+1}. Note that it would take infinite iterations to find the exact zero, so the user is responsible for setting some acceptable tolerance value close to zero to approximate x_{i+1}. Forward and Backward Euler are both considered one-step methods because they only rely on information from the previous step to calculate the next.
+where $t_{i+1}$, $x_i$, and $h$ are all known, and $x_{i+1}$ is still unknown. This is often called Backward Euler Method. Depending on $f$, this can be a really ugly, nonlinear equation and may require numerical methods to find the zero that yields the desired $x_{i+1}$. Note that it would take infinite iterations to find the exact zero, so the user is responsible for setting some acceptable tolerance value close to zero to approximate x_{i+1}. Smaller tolerances yield more accurate results but require a longer run time. Forward and Backward Euler are both considered one-step methods because they only rely on information from the previous step to calculate the next.
 
 Having methods for solving otherwise unsolveable problems is a powerful tool, but the question remains: how accurate are these approximations, and how stable?
 
-## Stability
-The concept of stability refers to the sensitivity of the solution of a given problem to small perturbations in inputs such as data or parameters [7]. The problem can be sensitive for two reasons, because the system itself is fundamentally sensitive to changes in input, which is commonly described ill-conditioned, or the problem can be ill-conditioned because of how a  numerical method is applied to it. Certain methods are more stable than others, and ideally, a numerical method shouldn't introduce  additional sensitivity to a problem.
 
-In using numerical methods to solve an IVP, the next step, $t_{i+1}$, is approximated based on information from the previous step, $t_i$. This goes for both the explicit and implicit methods. Some error may be introduced here depending on the problem. Worse, this error is then incorporated into the computation of the next step leading to errors being propagated through during the solution process.
+## Stability
+The concept of stability refers to the sensitivity of the solution of a given problem to small perturbations in inputs such as data or parameters [7]. The problem can be sensitive for two reasons, because the system itself is fundamentally sensitive to changes in input, i.e. the problem is ill-conditioned, or the applied numerical method can be ill-conditioned. Certain methods are more stable than others, and ideally, a numerical method shouldn't introduce additional sensitivity to a problem.
+
+In using single-step numerical methods to solve an IVP, the next step at $t_{i+1}$ is approximated based on information from the previous step $t_i$. This goes for both explicit and implicit methods. Some error is typically introduced during this approximation. Worse, this error is then incorporated into the computation of the next step leading to errors being propagated through during the solution process. This has massive implications on explicit methods especially as we will see in the following discussion. 
 
 Given an IVP
 
@@ -82,7 +84,7 @@ Note that in the implicit method, the maximum local error is controlled by some 
 
 $$y(t_{i})-y{i} = [u(t_{i})-y_{i}] + [y(t_i)-u(t_i)]$$
 
-where the first bracketed term is the local error controlled by the user [8], and the right bracketed term is the difference in the two solutions of the ODE at $t_i$. This second term is a property of the ODE and is often referred to as the true error [8]. If the IVP is stable, the true error will be comparable in magnitude to the local error. If the IVP is unstable, the true error will grow regardless of the size of the local errors. Note this happens regardless of the numerical method, but using methods with lower local effort can delay the rate of divergence from the true solution.
+where the first bracketed term is the local error, controlled by the user [8], and the second bracketed term is the difference in the two solutions of the ODE at $t_i$. For explicit methods, local error can be controlled by manipulating the step size $h$. Recall that this has direct implications on computational run time. Implicit on the other hand has its local error controlled by the tolerance value used to root find $y_{i+1}$, and as such it is unconditionally stable. This means regardless of the step size, implicit methods are stable. This becomes very important when dealing with stiff problems, which will be discussed later. This second term is a property of the ODE and is often referred to as the true error [8]. If the IVP is stable, the true error will be comparable in magnitude to the local error. If the IVP is unstable, the true error will grow regardless of the size of the local errors. Note this happens regardless of the numerical method, but using methods with lower local error can delay the rate of divergence from the true solution.
 
 stability of methods
 pg17
@@ -90,10 +92,13 @@ pg48 firat pRAGRAPH
 
 Implicit is unconditionally stable
 
+
 ## Accuracy
 To estimate the error of the approximation, forward error analysis is used to examine the errors that occur in implementing a numerical method [7]. Similarly, backwards error analysis can be used to show that an approximated value is the exact solution of some initial value plus some perturbation.
 
+
 ## Derivation ??
+
 
 ## Example and Sample Code
 Consider the IVP
@@ -121,14 +126,17 @@ Stiff systems are diffifult to define[11], but loosely, they converge to a stead
 
 textbook pg400, pg453
 
+
 ## Preferred Methods
+
 
 ## Implicit-Explicit Method (IMEX)
 
+
 ## Summary
 
-## References
 
+## References
 1. https://en.wikipedia.org/wiki/Explicit_and_implicit_methods
 2. https://www.fidelisfea.com/post/time-integration-methods-for-implicit-and-explicit-fea-what-are-they-and-how-do-they-work
 3. https://fncbook.github.io/fnc/ivp/overview.html
