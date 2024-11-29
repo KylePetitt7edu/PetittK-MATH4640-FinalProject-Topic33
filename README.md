@@ -88,13 +88,34 @@ where the first bracketed term is the local error, controlled by the user [8], a
 
 
 ## Accuracy and Error Estimation
+Error estimation is key to understanding how well the approximation will match system behaviour. To estimate error for one-step methods, the approximation is simply compared to the definite integral over the interval. The numerical methods discussed have form
+
+$$u(t_i+h) = y_i + \int_{t_i}^{t_i+h}f(x)dx$$
+
+where $u$ is the true value at the next step, $y$ is the approximate value at the previous step, and the integral is the change over that interval [8]. Since $f$ is typically unknown for our use case, it is often approximated using an interpolating polynomial, $P$, over the interval. As [we have discussed](derivation-of-basic-explicit-and-implicit-methods), for Forward Euler
+
+$$\int_{t_i}^{t_i+h}f(x)dx \approx hf(t_i) = P(x)$$
+
+and for backwards Euler
+
+$$\int_{t_i}^{t_i+h}f(x)dx \approx hf(t_{i+1}) = P(x)$$
+
+Using polynimial interpolation theory, given that $P$ is the unique polynomial of degree less than $s$ that approximates $f$ with a smooth interpolating function with $s$ distinct nodes, then there exists some value $C$ such that
+
+$$\left|f(x) - p(x)\right| \le Ch^s$$
+
+for all $x\in[t_i,t_i+h]$. This allows us to then estimate there error is of magnitude 
+
+$$f(x)-P(x) = \mathcal{O}(h^s)$$
+
+
 To estimate the error of the approximation, forward error analysis is used to examine the errors that occur in implementing a numerical method [7]. Similarly, backwards error analysis can be used to show that an approximated value is the exact solution of some initial value plus some perturbation.
 
 
 ## Example and Sample Code
 Consider the IVP
 
-$$\dot{x} = \taux, \space \space x(0) = x_0, \space \space \tau = -0.4$$
+$$\dot{x} = \tau x, \space \space x(0) = x_0, \space \space \tau = -0.4$$
 
 This IVP can be solved analytically (this exercise is left to the reader) yielding the equation
 
@@ -110,7 +131,7 @@ By varying the value of $h$, we can produce this plot showing how the size of $h
   <img src="MATH4640_FinalProject_Figure-TimestepComparison.jpg" width="600">
 </p>
 
-We see by inspection that this algorithm is only accurate for sufficiently small time steps. As the size of the time step is decreased, the approximation converges to the analytical solution as expected.
+We see that this algorithm is only qualitatively accurate for sufficiently small time steps. As the size of the time step is decreased, the approximation converges to the analytical solution as expected.
 
 ## Stiff Systems
 Stiff systems are diffifult to define[11], but loosely, they converge to a steady state very quickly compared to the timescale of the interval of integration $x\in[a,b]$ [8]. Stiff systems are very well-conditioned [6], but due to the nature of their stiffness, they require arbitrarily small step sizes when using explicit methods. For any reasonable step size, the integration method is ill-conditioned. For this reason implicit methods are typically preferred for stiff systems. Recall that implicit methods are unconditionally stable. Generally, it is much faster to compute one step using an explicit method than an implicit method, but for the same amount of error, the step size is significantly smaller for the explicit method. Thus, it is faster to compute using an implicit method. Explicit methods can be used for stiff problems, but it is impractical to use a constant step size when integrating. 
