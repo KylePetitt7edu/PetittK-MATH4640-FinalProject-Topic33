@@ -119,7 +119,7 @@ We see by inspection that this algorithm is only accurate for sufficiently small
 ## "Why they are what they are"
 
 ## Stiff Systems
-Stiff systems are diffifult to define[11], but loosely, they converge to a steady state very quickly compared to the timescale of the interval of integration $x\in[a,b]$ [8]. Stiff systems are very well-conditioned [6], but due to the nature of their stiffness, they require arbitrarily small step sizes when using explicit methods. For any reasonable step size, the integration method is ill-conditioned. For this reason implicit methods are typically preferred for stiff systems. Recall that implicit methods are unconditionally stable. Explicit methods can be used, but it is impractical to use a constant step size when integrating. 
+Stiff systems are diffifult to define[11], but loosely, they converge to a steady state very quickly compared to the timescale of the interval of integration $x\in[a,b]$ [8]. Stiff systems are very well-conditioned [6], but due to the nature of their stiffness, they require arbitrarily small step sizes when using explicit methods. For any reasonable step size, the integration method is ill-conditioned. For this reason implicit methods are typically preferred for stiff systems. Recall that implicit methods are unconditionally stable. Generally, it is much faster to compute one step using an explicit method than an implicit method, but for the same amount of error, the step size is significantly smaller for the explicit method. Thus, it is faster to compute using an implicit method. Explicit methods can be used for stiff problems, but it is impractical to use a constant step size when integrating. 
 
 textbook pg400, pg453
 
