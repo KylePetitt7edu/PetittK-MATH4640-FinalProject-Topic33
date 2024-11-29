@@ -120,7 +120,7 @@ This shows the direct dependence of local error on step size, and that it is qua
 
 
 ## Example and Sample Code
-Consider the IVP
+The importance of accuracy and stability is best illustrated with a brief example. Consider the IVP
 
 $$\dot{x} = \tau x, \space \space x(0) = x_0, \space \space \tau = -0.4$$
 
@@ -138,12 +138,11 @@ By varying the value of $h$, we can produce this plot showing how the size of $h
   <img src="MATH4640_FinalProject_Figure-TimestepComparison.jpg" width="600">
 </p>
 
-We see that this algorithm is only qualitatively accurate for sufficiently small time steps. As the size of the time step is decreased, the approximation converges to the analytical solution as expected.
+We see that this algorithm is only qualitatively accurate for sufficiently small time steps. As the size of the time step is decreased, the approximation converges to the analytical solution as expected. We also see that using an explicit method can lead to instability, which is shown when too large of a time step is chosen in this example. Selecting the correct time step is paramount for these methods to prevent instability and increase local accuracy.
+
 
 ## Stiff Systems
 Stiff systems are diffifult to define[11], but loosely, they converge to a steady state very quickly compared to the timescale of the interval of integration $x\in[a,b]$ [8]. Stiff systems are very well-conditioned [6], but due to the nature of their stiffness, they require arbitrarily small step sizes when using explicit methods. For any reasonable step size, the integration method is ill-conditioned. For this reason implicit methods are typically preferred for stiff systems. Recall that implicit methods are unconditionally stable. Generally, it is much faster to compute one step using an explicit method than an implicit method, but for the same amount of error, the step size is significantly smaller for the explicit method. Thus, it is faster to compute using an implicit method. Explicit methods can be used for stiff problems, but it is impractical to use a constant step size when integrating. 
-
-textbook pg400, pg453
 
 
 ## Practical Use
