@@ -84,26 +84,17 @@ Note that in the implicit method, the maximum local error is controlled by some 
 
 $$y(t_{i})-y{i} = [u(t_{i})-y_{i}] + [y(t_i)-u(t_i)]$$
 
-where the first bracketed term is the local error, controlled by the user [8], and the second bracketed term is the difference in the two solutions of the ODE at $t_i$. For explicit methods, local error can be controlled by manipulating the step size $h$. Recall that this has direct implications on computational run time. Implicit on the other hand has its local error controlled by the tolerance value used to root find $y_{i+1}$, and as such it is unconditionally stable. This means regardless of the step size, implicit methods are stable. This becomes very important when dealing with [stiff systems](#stiff-systems), which will be discussed later. This second term is a property of the ODE and is often referred to as the true error [8]. If the IVP is stable, the true error will be comparable in magnitude to the local error. If the IVP is unstable, the true error will grow regardless of the size of the local errors. Note this happens regardless of the numerical method, but using methods with lower local error can delay the rate of divergence from the true solution.
-
-stability of methods
-pg17
-pg48 firat pRAGRAPH
-
-Implicit is unconditionally stable
+where the first bracketed term is the local error, controlled by the user [8], and the second bracketed term is the difference in the two solutions of the ODE at $t_i$. Control of local error is an extremely important part of selecting a numerical method. Withour a reasonable local error, the results are essentially meaningless. How to properly manage local error will be further discussed in the [practical use](#practical-use) section. For explicit methods, local error can be controlled by manipulating the step size $h$. Recall that this has direct implications on computational run time. Implicit on the other hand has its local error controlled by the tolerance value used to root find $y_{i+1}$, and as such they are unconditionally stable [12]. This means regardless of the step size, implicit methods are stable. This becomes very important when dealing with [stiff systems](#stiff-systems), which will be discussed later. This second term is a property of the ODE and is often referred to as the true error [8]. If the IVP is stable, the true error will be comparable in magnitude to the local error. If the IVP is unstable, the true error will grow regardless of the size of the local errors. Note this happens regardless of the numerical method, but using methods with lower local error can delay the rate of divergence from the true solution.
 
 
-## Accuracy
+## Accuracy and Error Estimation
 To estimate the error of the approximation, forward error analysis is used to examine the errors that occur in implementing a numerical method [7]. Similarly, backwards error analysis can be used to show that an approximated value is the exact solution of some initial value plus some perturbation.
-
-
-## Derivation ??
 
 
 ## Example and Sample Code
 Consider the IVP
 
-$$\dot{x} = -0.4x, \space \space x(0) = x_0$$
+$$\dot{x} = \taux, \space \space x(0) = x_0, \space \space \tau = -0.4$$
 
 This IVP can be solved analytically (this exercise is left to the reader) yielding the equation
 
@@ -128,9 +119,11 @@ textbook pg400, pg453
 
 
 ## Practical Use
+Runge-Kutta
 
+IMEX
 
-## Implicit-Explicit Method (IMEX)
+It is not expensive to estimate local error, so it is common practice to track local error. This is useful because then we can vary step size throughout the solution and not have to run the smallest step size for the entire interval [8,pg48]. This is especially useful for stiff problems where an explicit method would typically be very expensive.
 
 
 ## Summary
@@ -148,4 +141,5 @@ textbook pg400, pg453
 9. https://en.wikipedia.org/wiki/Picard%E2%80%93Lindel%C3%B6f_theorem
 10. Textbook
 11. http://www.scholarpedia.org/article/Stiff_systems
-12. Bryngelson, S. H., & Freund, J. B. (2018). Global stability of flowing red blood cell trains. Physical Review Fluids, 3(7). https://doi.org/10.1103/physrevfluids.3.073101 
+12. https://ntrs.nasa.gov/api/citations/19890015285/downloads/19890015285.pdf
+13. Bryngelson, S. H., & Freund, J. B. (2018). Global stability of flowing red blood cell trains. Physical Review Fluids, 3(7). https://doi.org/10.1103/physrevfluids.3.073101 
