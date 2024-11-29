@@ -57,7 +57,7 @@ Following similar steps, the equation can be simplified to
 
 $$f(x_{i+1},t_{i+1})h + x_i - x_{i+1} = 0$$
 
-where $t_{i+1}$, $x_i$, and $h$ are all known, and $x_{i+1}$ is still unknown. This is often called Backward Euler Method. Depending on $f$, this can be a really ugly, nonlinear equation and may require numerical methods to find the zero to find x_{i+1}. Note that it would take infinite iterations to find the exact zero, so the user is responsible for setting some acceptable tolerance value close to zero to approximate x_{i+1}.
+where $t_{i+1}$, $x_i$, and $h$ are all known, and $x_{i+1}$ is still unknown. This is often called Backward Euler Method. Depending on $f$, this can be a really ugly, nonlinear equation and may require numerical methods to find the zero to find x_{i+1}. Note that it would take infinite iterations to find the exact zero, so the user is responsible for setting some acceptable tolerance value close to zero to approximate x_{i+1}. Forward and Backward Euler are both considered one-step methods because XXX
 
 Having methods for solving otherwise unsolveable problems is a powerful tool, but the question remains: how accurate are these approximations, and how stable?
 
@@ -86,6 +86,7 @@ where the first bracketed term is the local error controlled by the user [8], an
 
 stability of methods
 pg17
+pg48 firat pRAGRAPH
 
 Implicit is unconditionally stable
 
@@ -117,8 +118,8 @@ We see by inspection that this algorithm is only accurate for sufficiently small
 
 ## "Why they are what they are"
 
-## Stiff Cases
-Stiff systems are very stable. They converge to a steady equilibrium very quickly compared to the length of the interval of integration $x\in[a,b]$ [8]. Implicit methods are typically preferred for stiff systems because explicit methods require an arbitrarily small step size, $h$.
+## Stiff Systems
+Stiff systems are diffifult to define[11], but loosely, they converge to a steady state very quickly compared to the timescale of the interval of integration $x\in[a,b]$ [8]. Stiff systems are very well-conditioned [6], but due to the nature of their stiffness, they require arbitrarily small step sizes when using explicit methods. For any reasonable step size, the integration method is ill-conditioned. For this reason implicit methods are typically preferred for stiff systems. Recall that implicit methods are unconditionally stable. Explicit methods can be used, but it is impractical to use a constant step size when integrating. 
 
 textbook pg400, pg453
 
@@ -138,4 +139,5 @@ textbook pg400, pg453
 8. https://web.p.ebscohost.com/ehost/detail/detail?vid=0&sid=89723f7f-8a2b-498a-9314-98035c5a8fab%40redis&bdata=JkF1dGhUeXBlPWlwLHNoaWImc2l0ZT1laG9zdC1saXZlJnNjb3BlPXNpdGU%3d#db=e000xna&AN=125134
 9. https://en.wikipedia.org/wiki/Picard%E2%80%93Lindel%C3%B6f_theorem
 10. Textbook
-11. Bryngelson, S. H., & Freund, J. B. (2018). Global stability of flowing red blood cell trains. Physical Review Fluids, 3(7). https://doi.org/10.1103/physrevfluids.3.073101 
+11. http://www.scholarpedia.org/article/Stiff_systems
+12. Bryngelson, S. H., & Freund, J. B. (2018). Global stability of flowing red blood cell trains. Physical Review Fluids, 3(7). https://doi.org/10.1103/physrevfluids.3.073101 
