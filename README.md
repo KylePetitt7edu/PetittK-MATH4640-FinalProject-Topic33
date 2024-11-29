@@ -104,12 +104,19 @@ Using polynimial interpolation theory, given that $P$ is the unique polynomial o
 
 $$\left|f(x) - p(x)\right| \le Ch^s$$
 
-for all $x\in[t_i,t_i+h]$. This allows us to then estimate there error is of magnitude 
+for all $x\in[t_i,t_i+h]$ yielding 
 
 $$f(x)-P(x) = \mathcal{O}(h^s)$$
 
+The estimated error can then be computed by taking the integral [8]. 
 
-To estimate the error of the approximation, forward error analysis is used to examine the errors that occur in implementing a numerical method [7]. Similarly, backwards error analysis can be used to show that an approximated value is the exact solution of some initial value plus some perturbation.
+$$\int_{t_i}^{t_i+h}f(x)dx \approx $$\int_{t_i}^{t_i+h}P(x)dx + \mathcal{O}(h^{s+1})$$
+
+Applying the Forward and Backwards Euler methods to this relationship yields the magnitude of the local error for these methods is 
+
+$$u(t_i+h) - y_{i+1} = \mathcal{O}(h^{2})dx$$
+
+This shows the direct dependence of local error on step size. The error of other methods can be computed similary using the method shown. As one might expect, the simple, one-step Euler methods are less accurate than the more complicated algorithms. By how much will be discussed [later](#practical-use).
 
 
 ## Example and Sample Code
