@@ -110,7 +110,10 @@ $$x_{i+1} \approx hf(x_i,t_i) + x_i = -0.4x_ih+x_i$$
 
 By varying the value of $h$, we can produce this plot showing how the size of $h$ can directly affect the accuracy of the integration.
 
-<img src="MATH4640_FinalProject_Figure-TimestepComparison.jpg" width="600">
+<p align="center">
+  <img src="MATH4640_FinalProject_Figure-TimestepComparison.jpg" width="600">
+</p>
+
 
 
 We see by inspection that this algorithm is only accurate for sufficiently small time steps. As the size of the time step is decreased, the approximation converges to the analytical solution as expected.
