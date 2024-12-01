@@ -107,15 +107,15 @@ $$\left|f(x) - p(x)\right| \le Ch^s$$
 
 for all $x\in[t_i,t_i+h]$ yielding 
 
-$$f(x)-P(x) = \mathcal{O}(h^s)$$
+$$f(x)-P(x) = \mathcal{O}\left(h^s\right)$$
 
 The estimated error of a numerical method can then be computed by taking the integral [8]. 
 
-$$\int_{t_i}^{t_i+h}f(x)dx \approx \int_{t_i}^{t_i+h}P(x)dx + \mathcal{O}(h^{s+1})$$
+$$\int_{t_i}^{t_i+h}f(x)dx \approx \int_{t_i}^{t_i+h}P(x)dx + \mathcal{O}\left(h^{s+1}\right)$$
 
 Applying the Forward and Backwards Euler methods to this relationship yields that the magnitude of the local error for these methods is 
 
-$$u(t_i+h) - y_{i+1} = \mathcal{O}(h^{2})dx$$
+$$u(t_i+h) - y_{i+1} = \mathcal{O}\left(h^{2}\right)dx$$
 
 This shows the direct dependence of local error on step size, and that it is quadratic in nature. The error of other methods can be computed similary using the method shown. As one might expect, the simple, one-step Euler methods are less accurate locally than the more complicated, widely used algorithms. By how much will be discussed [later](#practical-use).
 
