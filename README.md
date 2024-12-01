@@ -181,16 +181,16 @@ $$\left|\ddot{y_i}\right|\approx\left|\frac{\dot{y_i}-\dot{y_{i-1}}}{t_i-t_{i-1}
 
 
 ## References
-1. [link](https://en.wikipedia.org/wiki/Explicit_and_implicit_methods)
-2. [link](https://www.fidelisfea.com/post/time-integration-methods-for-implicit-and-explicit-fea-what-are-they-and-how-do-they-work) 
-3. [link](https://fncbook.github.io/fnc/ivp/overview.html)
-4. [link](https://innovationspace.ansys.com/courses/wp-content/uploads/sites/5/2021/02/Lesson2_ImplicitAndExplicitTimeIntegration-1.pdf)
-5. [link](https://qucs.sourceforge.net/tech/node24.html)
-6. [link](http://www.scholarpedia.org/article/Initial_value_problems)
-7. [link](http://www.scholarpedia.org/article/Numerical_methods#Numerical_solution_of_differential_and_integral_equations)
-8. XXX
-9. [link](https://en.wikipedia.org/wiki/Picard%E2%80%93Lindel%C3%B6f_theorem)
-10. Textbook
-11. [link](http://www.scholarpedia.org/article/Stiff_systems)
-12. [link](https://ntrs.nasa.gov/api/citations/19890015285/downloads/19890015285.pdf)
-13. [link](https://en.wikipedia.org/wiki/Crank%E2%80%93Nicolson_method)
+1. [1](https://en.wikipedia.org/wiki/Explicit_and_implicit_methods)
+2. [2](https://www.fidelisfea.com/post/time-integration-methods-for-implicit-and-explicit-fea-what-are-they-and-how-do-they-work) 
+3. [3](https://fncbook.github.io/fnc/ivp/overview.html)
+4. [4](https://innovationspace.ansys.com/courses/wp-content/uploads/sites/5/2021/02/Lesson2_ImplicitAndExplicitTimeIntegration-1.pdf)
+5. [5](https://qucs.sourceforge.net/tech/node24.html)
+6. [6](http://www.scholarpedia.org/article/Initial_value_problems)
+7. [7](http://www.scholarpedia.org/article/Numerical_methods#Numerical_solution_of_differential_and_integral_equations)
+8. [8]
+9. [9](https://en.wikipedia.org/wiki/Picard%E2%80%93Lindel%C3%B6f_theorem)
+10. [10]
+11. [11](http://www.scholarpedia.org/article/Stiff_systems)
+12. [12](https://ntrs.nasa.gov/api/citations/19890015285/downloads/19890015285.pdf)
+13. [13](https://en.wikipedia.org/wiki/Crank%E2%80%93Nicolson_method)
