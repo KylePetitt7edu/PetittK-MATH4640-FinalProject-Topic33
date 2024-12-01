@@ -173,7 +173,7 @@ $$h_j \le \sqrt{\frac{2tol}{\left|\ddot{y}_i\right|}}$$
 
 where 
 
-$$\left| \ddot{y}_i \right| \approx \frac{\dot{y} _i-\dot{y}_{i-1}}{t_i-t_{i-1}}$$
+$$\left| \ddot{y}_i \right| \approx \frac{\dot{y}_i-\dot{y}_{i-1}}{t_i-t_{i-1}}$$
 
 managing local error [8]
 
