@@ -181,16 +181,16 @@ $$\left|\ddot{y_i}\right|\approx\left|\frac{\dot{y_i}-\dot{y_{i-1}}}{t_i-t_{i-1}
 
 
 ## References
-1. Atkinson, K. (2007). Numerical Analysis. Scholarpedia, 2(8), 3163. https://doi.org/10.4249/scholarpedia.3163 [(link)](http://www.scholarpedia.org/article/Numerical_methods)
-2. Belytschko, T. (1984). Explicit, Implicit, and Hybrid Methods. Ntrs.nasa.gov; Northwestern University. https://ntrs.nasa.gov/api/citations/19890015285/downloads/19890015285.pdf [(link)](https://ntrs.nasa.gov/api/citations/19890015285/downloads/19890015285.pdf)
-3. Crank–Nicolson method. (2021, January 15). Wikipedia; Wikimedia Foundation. https://en.wikipedia.org/wiki/Crank%E2%80%93Nicolson_method [(link)](https://en.wikipedia.org/wiki/Crank%E2%80%93Nicolson_method)
-4. Driscoll, T., & Braun, R. (2020). Initial-value problems for ODEs — Fundamentals of Numerical Computation. Github.io. https://fncbook.github.io/fnc/ivp/overview.html [(link)](https://fncbook.github.io/fnc/ivp/overview.html)
-5. Explicit and implicit methods. (2021, January 14). Wikipedia. https://en.wikipedia.org/wiki/Explicit_and_implicit_methods [(link)](https://en.wikipedia.org/wiki/Explicit_and_implicit_methods)
+1. Atkinson, K. (2007). Numerical Analysis. Scholarpedia, 2(8), 3163. [(link)](http://www.scholarpedia.org/article/Numerical_methods)
+2. Belytschko, T. (1984). Explicit, Implicit, and Hybrid Methods. Ntrs.nasa.gov; Northwestern University. [(link)](https://ntrs.nasa.gov/api/citations/19890015285/downloads/19890015285.pdf)
+3. Crank–Nicolson method. (2021, January 15). Wikipedia; Wikimedia Foundation. [(link)](https://en.wikipedia.org/wiki/Crank%E2%80%93Nicolson_method)
+4. Driscoll, T., & Braun, R. (2020). Initial-value problems for ODEs — Fundamentals of Numerical Computation. Github.io. [(link)](https://fncbook.github.io/fnc/ivp/overview.html)
+5. Explicit and implicit methods. (2021, January 14). Wikipedia. [(link)](https://en.wikipedia.org/wiki/Explicit_and_implicit_methods)
 6. Heath, M. T. (n.d.). Scientific computing : an introductory survey. Philadelphia Society For Industrial And Applied Mathematics.
-7. Implicit and Explicit Time Integration Time Integration Method -Lesson 2. (n.d.). ANSYS. Retrieved December 1, 2024, from https://innovationspace.ansys.com/courses/wp-content/uploads/sites/5/2021/02/Lesson2_ImplicitAndExplicitTimeIntegration-1.pdf [(link)](https://innovationspace.ansys.com/courses/wp-content/uploads/sites/5/2021/02/Lesson2_ImplicitAndExplicitTimeIntegration-1.pdf)
-8. Integration methods. (2024). Sourceforge.net. https://qucs.sourceforge.net/tech/node24.html [(link)](https://qucs.sourceforge.net/tech/node24.html)
-9. Kosaraju, S. (2022, October 24). Time integration Methods For Implicit And Explicit FEA - What Are They And How Do They Work? Fidelis FEA. https://www.fidelisfea.com/post/time-integration-methods-for-implicit-and-explicit-fea-what-are-they-and-how-do-they-work [(link)](https://www.fidelisfea.com/post/time-integration-methods-for-implicit-and-explicit-fea-what-are-they-and-how-do-they-work)
-10. Picard–Lindelöf theorem. (2021, September 6). Wikipedia; Wikimedia Foundation. https://en.wikipedia.org/wiki/Picard%E2%80%93Lindel%C3%B6f_theorem [(link)](https://en.wikipedia.org/wiki/Picard%E2%80%93Lindel%C3%B6f_theorem)
+7. Implicit and Explicit Time Integration Time Integration Method -Lesson 2. (n.d.). ANSYS. Retrieved December 1, 2024. [(link)](https://innovationspace.ansys.com/courses/wp-content/uploads/sites/5/2021/02/Lesson2_ImplicitAndExplicitTimeIntegration-1.pdf)
+8. Integration methods. (2024). Sourceforge.net. [(link)](https://qucs.sourceforge.net/tech/node24.html)
+9. Kosaraju, S. (2022, October 24). Time integration Methods For Implicit And Explicit FEA - What Are They And How Do They Work? Fidelis FEA. [(link)](https://www.fidelisfea.com/post/time-integration-methods-for-implicit-and-explicit-fea-what-are-they-and-how-do-they-work)
+10. Picard–Lindelöf theorem. (2021, September 6). Wikipedia; Wikimedia Foundation. [(link)](https://en.wikipedia.org/wiki/Picard%E2%80%93Lindel%C3%B6f_theorem)
 11. Shampine, L. F., Shampine, L. F., Gladwell, I., & Thompson, S. (2003). Solving ODEs with MATLAB. Cambridge University Press.
-12. Shampine, L., & Thompson, S. (2007a). Initial value problems. Scholarpedia, 2(3), 2861. https://doi.org/10.4249/scholarpedia.2861 [(link)](http://www.scholarpedia.org/article/Initial_value_problems)
-13. Shampine, L., & Thompson, S. (2007b). Stiff systems. Scholarpedia, 2(3), 2855. https://doi.org/10.4249/scholarpedia.2855 [(link)](http://www.scholarpedia.org/article/Stiff_systems)
+12. Shampine, L., & Thompson, S. (2007a). Initial value problems. Scholarpedia, 2(3), 2861. [(link)](http://www.scholarpedia.org/article/Initial_value_problems)
+13. Shampine, L., & Thompson, S. (2007b). Stiff systems. Scholarpedia, 2(3), 2855. [(link)](http://www.scholarpedia.org/article/Stiff_systems)
