@@ -7,6 +7,7 @@ Title: Accuracy and Stability of Different Types of Time-Stepping Methods
 # Accuracy and Stability of Different Types of Time-Stepping Methods
 In numerical analysis, time-stepping methods are one of the most fundamental forms of numerical integration. These methods are commonly used to integrate time-dependent ordinary differential equations (ODEs) and partial differential equations (PDEs) [1]. They are approximate methods that are dependent on user parameters and model properties, but can be used to approximate the behavior of a variety of systems with high fidelity if applied correctly. They are especially useful for integrating systems with no analytical solution, and are often used in industry and research. As such, the accuracy and stability of these methods are paramount. This wiki will serve to provide an introduction to the accuracy and stability of such methods, but a more in-depth study is left to the reader. Only first-order, ordinary differential equation with given initial conditions, known as initial-value problems (IVPs), will be discussed directly in detail, although these methods can be applied to higher order systems and a range of conditions.
 
+
 ## Background
 The Existence an Uniqueness Theorem states that the solution to an IVP, $f$, exists and is unique over a specified internal if $f$ is continuous and differentiable over that interval [9]. This is key for numerical methods because it guarantees an exact solution under these conditions. This also allows the error of an approximation to be computable and allows for the determination of stability [10].
 
@@ -162,15 +163,13 @@ $$k_3 = hf\left(t_i+\frac{h}{2},u_i+\frac{k_2}{2}\right)$$
 $$k_4 = hf(t_i+h,u_i+k_3)$$
 $$u_{i+1} = u_i + \frac{(k_1+2k_2+2k_3+k_4)}{6}$$
 
-By incorporating this second order term using several stages, the local error is decreased to $\mathcal{O}(h^{3})dx$. This alone should be proof that the extra work is worth the benfits. Implicit Runge-Kutta methods can also be implementesd
-
-[6]
+By incorporating this second order term using several stages, the local error is decreased to $\mathcal{O}(h^{3})dx$ [6]. This alone should be proof that the extra work is worth the benfits. Implicit Runge-Kutta methods can also be implemented similar to how Backwards Euler is modified from Forward Euler.
 
 Numerical methods are a balancing act of accuracy and efficiency. It is important that results be accurate enough to be useful, but if they are too useful, the computational run time may become too expensive to be worthwhile. Implicit methods are more computationally expensive than explicit methods and are often unnecessary for most problems. They guarantee stability, but the resources needed for the root-finding step are so expensive they can't compete with explicit methods. However, [Stiff systems](#stiff-systems) are a great counter-example of this. To make explicit methods accurate enough to effectively solve a stiff system, an extremely small time step is needed to maintain stability and accuracy. Implicit methods are then required because of their unconditional stability. They are more computationally expensive per step, but overall they are less computationally expensive to achieve the same accuracy because they don't need such small time steps. Similarly, fourth order Runge-Kutta methods require more steps than Forward Euler, but the gains in accuracy make it worth it. Runge-Kutta can also be applied using a higher order, but increasing the order increases the accuracy less and less as the order increases. Eventually, the computational time required to compute more terms begins to outweigh the gains achieved in accuracy. This sweet spot is typically around fourth order [3]. 
 
 In practice, most softwares have built in solvers. These solvers are optimized to estimate and control error as they solve [6]. It is not expensive to estimate local error, so it is common practice to track local error during the integration process. There are several ways to do this, including doing a finite difference approximation to approximate the derivative of the solution or comparing results between solutions given by different methods [6] to determine error. This last example is commonly implemented with different order Runge-Kutta methods. If the error is greater than some tolerance value when using step size $h_j$, then the algorithm can estimate what the error will be using a new step size $h_{j+1}$ and the solution can be recomputed with the new step size. Similarly, if error is much smaller than some tolerance value, the step size can be increased. Estimating error is useful because then the algorithm can tune the step size throughout the solution process so that the smallest step size isn't used continuously for the entire interval [8]. This is especially useful for stiff problems where an explicit method would typically be very expensive. This practice ensures stability while preventing unnecessarily long computational run time.
 
-managing local error [10] [6]
+managing local error [8] [10]
 
 ## Summary
 
@@ -178,7 +177,7 @@ managing local error [10] [6]
 ## References
 1. https://en.wikipedia.org/wiki/Explicit_and_implicit_methods
 2. https://www.fidelisfea.com/post/time-integration-methods-for-implicit-and-explicit-fea-what-are-they-and-how-do-they-work 
-3. https://fncbook.github.io/fnc/ivp/overview.html *
+3. https://fncbook.github.io/fnc/ivp/overview.html
 4. https://innovationspace.ansys.com/courses/wp-content/uploads/sites/5/2021/02/Lesson2_ImplicitAndExplicitTimeIntegration-1.pdf
 5. https://qucs.sourceforge.net/tech/node24.html
 6. http://www.scholarpedia.org/article/Initial_value_problems
