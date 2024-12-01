@@ -169,11 +169,11 @@ Numerical methods are a balancing act of accuracy and efficiency. It is importan
 
 In practice, most softwares have built in solvers. These solvers are optimized to estimate and control error as they solve [6]. It is not expensive to estimate local error, so it is common practice to track local error during the integration process. There are several ways to do this, including doing a finite difference approximation to approximate the derivative of the solution or comparing results between solutions given by different methods [6] to determine error. This last example is commonly implemented with different order Runge-Kutta methods. If the error is greater than some tolerance value when using step size $h_j$, then the algorithm can estimate what the error will be using a new step size $h_{j+1}$ and the solution can be recomputed with the new step size. Similarly, if error is much smaller than some tolerance value, the step size can be increased. Estimating error is useful because then the algorithm can tune the step size throughout the solution process so that the smallest step size isn't used continuously for the entire interval [8]. This is especially useful for stiff problems where an explicit method would typically be very expensive. This practice ensures stability while preventing unnecessarily long computational run time. One such method for computing the step size is [10]
 
-$$h_j \le \sqrt{\frac{2tol}{\left|\ddot{y_i}\right|}}$$
+$$h_j \le \sqrt{\frac{2tol}{\left|\ddot{y}_i\right|}}$$
 
 where 
 
-$$\left|\ddot{y_i}\right| \approx \frac{\dot{y_i}-\dot{y}_{i-1}}{t_i-t_{i-1}}$$
+$$\left| \ddot{y}_i \right| \approx \frac{\dot{y} _i-\dot{y}_{i-1}}{t_i-t_{i-1}}$$
 
 managing local error [8]
 
