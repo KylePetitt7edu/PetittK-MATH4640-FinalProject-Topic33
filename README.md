@@ -146,7 +146,7 @@ Stiff systems are diffifult to define [11], but loosely, they converge to a stea
 
 
 ## Practical Use
-Thus far the discussion has focused primarily on the theory of basic numerical methods in their basic form, and how to determine key properties such as stability and accuracy. This section looks to discuss stability and accuracy for practical use, and more advanced methods of numerical integration such as Runge-Kutta methods and IMEX.
+Thus far the discussion has focused primarily on the theory of basic numerical methods in their basic form, and how to determine key properties such as stability and accuracy. This section looks to discuss stability and accuracy for practical use including more advanced methods of numerical integration such as Runge-Kutta methods and IMEX, and how to control and limit local error.
 
 IMEX methods are methods that combine implicit and explicit methods, taking advantage of both of their strengths. One such IMEX method is the Crank-Nicolson method which computes the next step by averaging the Forward Euler and Backwards Euler outputs [13]. By combining these methods, it is more accurate than backwards Euler, while maintaining its unconditional stability and being approximately the same computational run time.
 
@@ -168,12 +168,9 @@ By incorporating this second order term using several stages, the local error is
 
 Numerical methods are a balancing act of accuracy and efficiency. It is important that results be accurate enough to be useful, but if they are too useful, the computational run time may become too expensive to be worthwhile. Implicit methods are more computationally expensive than explicit methods and are often unnecessary for most problems. They guarantee stability, but the resources needed for the root-finding step are so expensive they can't compete with explicit methods. However, [Stiff systems](#stiff-systems) are a great counter-example of this. To make explicit methods accurate enough to effectively solve a stiff system, an extremely small time step is needed to maintain stability and accuracy. Implicit methods are then required because of their unconditional stability. They are more computationally expensive per step, but overall they are less computationally expensive to achieve the same accuracy because they don't need such small time steps. Similarly, fourth order Runge-Kutta methods require more steps than Forward Euler, but the gains in accuracy make it worth it. Runge-Kutta can also be applied using a higher order, but increasing the order increases the accuracy less and less as the order increases. Eventually, the computational time required to compute more terms begins to outweigh the gains achieved in accuracy. This sweet spot is typically around fourth order [3]. 
 
-
+In practice, most softwares have built in solvers. These solvers are optimized to estimate and control error as they solve [6]. It is not expensive to estimate local error, so it is common practice to track local error during the integration process. There are several ways to do this, including doing a finite difference approximation to approximate the derivative of the solution or comparing results between solutions given by different methods [6] to determine error. This last example is commonly implemented with different order Runge-Kutta methods. If the error is greater than some tolerance value when using step size $h_j$, then the algorithm can estimate what the error will be using a new step size $h_{j+1}$ and the solution can be recomputed with the new step size. Similarly, if error is much smaller than some tolerance value, the step size can be increased. Estimating error is useful because then the algorithm can tune the step size throughout the solution process so that the smallest step size isn't used continuously for the entire interval [8]. This is especially useful for stiff problems where an explicit method would typically be very expensive. This practice ensures stability while preventing unnecessarily long computational run time.
 
 managing local error [10] [6]
-
-It is not expensive to estimate local error, so it is common practice to track local error. This is useful because then we can vary step size throughout the solution and not have to run the smallest step size for the entire interval [8,pg48]. This is especially useful for stiff problems where an explicit method would typically be very expensive.
-
 
 ## Summary
 
