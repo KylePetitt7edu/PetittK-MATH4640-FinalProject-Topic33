@@ -181,16 +181,16 @@ $$\left|\ddot{y_i}\right|\approx\left|\frac{\dot{y_i}-\dot{y_{i-1}}}{t_i-t_{i-1}
 
 
 ## References
-1. https://en.wikipedia.org/wiki/Explicit_and_implicit_methods
-2. https://www.fidelisfea.com/post/time-integration-methods-for-implicit-and-explicit-fea-what-are-they-and-how-do-they-work 
-3. https://fncbook.github.io/fnc/ivp/overview.html
-4. https://innovationspace.ansys.com/courses/wp-content/uploads/sites/5/2021/02/Lesson2_ImplicitAndExplicitTimeIntegration-1.pdf
-5. https://qucs.sourceforge.net/tech/node24.html
-6. http://www.scholarpedia.org/article/Initial_value_problems
-7. http://www.scholarpedia.org/article/Numerical_methods#Numerical_solution_of_differential_and_integral_equations
-8. https://web.p.ebscohost.com/ehost/detail/detail?vid=0&sid=89723f7f-8a2b-498a-9314-98035c5a8fab%40redis&bdata=JkF1dGhUeXBlPWlwLHNoaWImc2l0ZT1laG9zdC1saXZlJnNjb3BlPXNpdGU%3d#db=e000xna&AN=125134
-9. https://en.wikipedia.org/wiki/Picard%E2%80%93Lindel%C3%B6f_theorem
-10. Textbook *
-11. http://www.scholarpedia.org/article/Stiff_systems
-12. https://ntrs.nasa.gov/api/citations/19890015285/downloads/19890015285.pdf
-13. https://en.wikipedia.org/wiki/Crank%E2%80%93Nicolson_method
+1. [link](https://en.wikipedia.org/wiki/Explicit_and_implicit_methods)
+2. [link](https://www.fidelisfea.com/post/time-integration-methods-for-implicit-and-explicit-fea-what-are-they-and-how-do-they-work) 
+3. [link](https://fncbook.github.io/fnc/ivp/overview.html)
+4. [link](https://innovationspace.ansys.com/courses/wp-content/uploads/sites/5/2021/02/Lesson2_ImplicitAndExplicitTimeIntegration-1.pdf)
+5. [link](https://qucs.sourceforge.net/tech/node24.html)
+6. [link](http://www.scholarpedia.org/article/Initial_value_problems)
+7. [link](http://www.scholarpedia.org/article/Numerical_methods#Numerical_solution_of_differential_and_integral_equations)
+8. XXX
+9. [link](https://en.wikipedia.org/wiki/Picard%E2%80%93Lindel%C3%B6f_theorem)
+10. Textbook
+11. [link](http://www.scholarpedia.org/article/Stiff_systems)
+12. [link](https://ntrs.nasa.gov/api/citations/19890015285/downloads/19890015285.pdf)
+13. [link](https://en.wikipedia.org/wiki/Crank%E2%80%93Nicolson_method)
