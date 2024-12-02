@@ -94,7 +94,7 @@ This gives a formulaic approach for the determination of stability for the most 
 
 
 ## Accuracy
-Accuracy is fundamentally important to any problem solving technique. Without accuracy, the results are meaningless, and accuracy is dependent on stability and vice versa. The accuracy of a method is measured through error, which is better discussed via the following example. Given an IVP 
+Accuracy is fundamentally important to any problem solving technique. Without accuracy, the results are meaningless, and accuracy is dependent on stability and vice versa. The accuracy of a method is measured through error, which will be discussed via the following example. Given an IVP 
 
 $$\dot{u} = f(t,u), \space \space u(t_i) = y_i$$   
 
