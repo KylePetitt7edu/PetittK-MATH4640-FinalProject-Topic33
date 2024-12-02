@@ -180,7 +180,7 @@ The most widely used numerical methods are the multi-stage Runge-Kutta methods [
 
 $$\ddot{u}(x,t) \approx \dot{f}(x,t) = \frac{\partial f}{\partial t} + \frac{\partial f}{\partial u}\frac{du}{dt}$$ 
 
-These partial derivatives must then be approximated to complete the calculation. There are several ways to do this, which produce a whole class of Runge-Kutta methods. These multi-stage methods interpolate intermediate values in the interval, evaluate the ODE function, $f$, at these values, and then weight the outputs with different coefficients. This allows the algorithm to integrate multiple times per time-step. The number of interpolated values defines the number of stages and the order of the method. For example, fourth order Runge-Kutta uses 
+These partial derivatives must then be approximated to complete the calculation. There are several ways to do this, which produce a whole class of Runge-Kutta methods. These multi-stage methods interpolate intermediate values in the interval, evaluate the ODE function, $f$, at these values, and then weight the outputs with different coefficients. The number of interpolated values defines the number of stages and the order of the method. For example, fourth order Runge-Kutta uses 
 
 $$k_1 = hf(t_i,u_i)$$ 
 $$k_2 = hf\left(t_i+\frac{h}{2},u_i+\frac{k_1}{2}\right)$$ 
