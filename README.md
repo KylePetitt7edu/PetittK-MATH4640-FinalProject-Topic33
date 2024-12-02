@@ -54,7 +54,7 @@ $$x_{i+1} \approx hf(x_i,t_i)+x_i$$
 
 which is known as Forward Euler's integration. Note that this method depends heavily on the size of $h$, which is chosen by the user. Intuitively, as the size of $h$ is decreased to 0, representing infinite $n$ intervals, the accuracy of the approximation approaches the exact solution. Unfortunately, this increase in accuracy has a side-effect, a direct increase in run time, which will be discussed [later](practical-use). 
 
-The implicit method can be derived similarly given the same function. The first few steps are the same with the exception that the slope, $f$, is a function of $f(x_{i+1},t_{i+1})$ instead of $f(x_{i},t_{i})$ [9]. 
+The implicit method can be derived similarly given the same starting function. The first few steps are the same with the exception that the slope, $f$, is a function of $f(x_{i+1},t_{i+1})$ instead of $f(x_{i},t_{i})$ [9]. 
 
 $$\frac{x_{i+1}-x_i}{h} \approx f(x_{i+1},t_{i+1})$$ 
 
@@ -70,7 +70,7 @@ Having methods for solving otherwise unsolvable problems is a powerful tool, but
 ## Stability 
 The concept of stability refers to the sensitivity of the solution of a given problem to small perturbations in inputs such as data or parameters [1]. The problem can be sensitive for two reasons, because the system itself is fundamentally sensitive to changes in input, i.e., the problem is ill-conditioned, or the applied numerical method can be ill-conditioned. Certain methods are more stable than others, and ideally, a numerical method should not introduce additional sensitivity to a problem. 
 
-In using single-step numerical methods to solve an IVP, the next step at $t_{i+1}$ is approximated based on information from the previous step $t_i$. This goes for both explicit and implicit methods. Some error is typically introduced during this approximation. Worse, this error is then incorporated into the computation of the next step leading to errors being propagated through during the solution process. This has massive implications on explicit methods especially as we will see in the following discussion.  
+In using single-stage numerical methods to solve an IVP, the next step at $t_{i+1}$ is approximated based on information from the previous step $t_i$. This goes for both explicit and implicit methods. Some error is typically introduced during this approximation. Worse, this error is then incorporated into the computation of the next step leading to errors being propagated through during the solution process. This has massive implications on explicit methods especially as we will see in the following discussion.  
 
 Given an IVP 
 
