@@ -86,7 +86,7 @@ Given that $h$ and the index value $i$ is are always positive, if the real compo
 
 $$\left|1+h\lambda\right|<1$$
 
-i.e., $h\lambda must be inside a circle in the complex plane of radius 1 centered at -1. This may sound stringent, but recall that $h$ is typically very small. $If $\lambda$ is purely real, then the following must be true for Euler's method to be stable
+i.e., $h\lambda$ must be inside a circle in the complex plane of radius 1 centered at -1. This may sound stringent, but recall that $h$ is typically very small. If $\lambda$ is purely real, then the following must be true for Euler's method to be stable
 
 $$h\le\frac{-2}{\lambda}$$
 
