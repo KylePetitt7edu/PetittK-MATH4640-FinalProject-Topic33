@@ -114,7 +114,7 @@ where the first bracketed term is the local error, controlled by the user [11], 
   
 
 ## Error Estimation 
-Error estimation is key to understanding how well the approximation will match system behavior. To estimate error for one-step methods, the approximation is simply compared to the definite integral over the interval. Typically, the definite integral cannot be calculated explicitly as $f$ is unknown, making it impossible to calculate the exact error of a numerical method; however, the error of methods can be estimated based off known parameters. The numerical methods discussed thus far have form 
+Error estimation is key to understanding how well the approximation will match system behavior. Ideally, to estimate error for one-step methods, the approximation is simply compared to the definite integral over the interval. Typically, the definite integral cannot be calculated explicitly as $f$ is unknown, making it impossible to calculate the exact error of a numerical method; however, the error of methods can be estimated based off known parameters. The numerical methods discussed thus far have form 
 
 $$u(t_i+h) = y_i + \int_{t_i}^{t_i+h}f(x)dx$$ 
 
@@ -148,7 +148,7 @@ This shows the direct dependence of local error on step size, and just how depen
 ## Example and Sample Code 
 The importance of accuracy and stability is best illustrated with a brief example. Consider the IVP 
 
-$$\dot{x} = \tau x, \space \space x(0) = x_0, \space \space \tau = -0.4$$ 
+$$\dot{x} = \lambda x, \space \space x(0) = x_0, \space \space \lambda = -0.4$$ 
 
 This IVP can be solved analytically (this exercise is left to the reader) yielding the equation 
 
@@ -206,8 +206,8 @@ Time-stepping numerical methods for IVPs are divided into two major categories, 
 
 * Practical Use section could use some organizing for better flow
 * Practical use section repeats a lot of what summary says
-* Discuss how to measure numerical stability
-* Reorganize stability and accuracy sections
+* reorganzie stability, accuracy, error estimation sections
+
 
 ## References 
 1. Atkinson, K. (2007). Numerical Analysis. Scholarpedia, 2(8), 3163. [(link)](http://www.scholarpedia.org/article/Numerical_methods) 
