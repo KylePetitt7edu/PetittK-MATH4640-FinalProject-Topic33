@@ -1,11 +1,10 @@
+```
 --- 
 Name: Kyle Petitt 
-
 Topic: 33 
-
 Title: Accuracy and Stability of Different Types of Time-Stepping Methods 
-
 ---- 
+```
   
 
 # Accuracy and Stability of Different Types of Time-Stepping Methods 
