@@ -106,7 +106,7 @@ and the global error can be calculated as
 
 $$err_g = y(t_{i})-y_{i}$$ 
 
-Note that in the implicit method, the maximum local error is controlled by some tolerance value chosen by the user, limiting the global error indirectly [11], and the global error is almost always unknown. The propagation of error can then be analyzed using   
+Note that in the implicit method, the maximum local error is controlled by some tolerance value chosen by the user, limiting the global error indirectly [11]. The global error is almost always unknown because the analytical solution $y$ is almost always unknown. The propagation of error can then be analyzed using   
 
 $$y(t_{i})-y{i} = [u(t_{i})-y_{i}] + [y(t_i)-u(t_i)]$$ 
 
