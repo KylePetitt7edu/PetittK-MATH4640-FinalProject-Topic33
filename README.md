@@ -114,7 +114,7 @@ where the first bracketed term is the local error, controlled by the user [11], 
   
 
 ## Error Estimation 
-Error estimation is key to understanding how well the approximation will match system behavior. Ideally, to estimate error for one-step methods, the approximation is simply compared to the definite integral over the interval. Typically, the definite integral cannot be calculated explicitly as $f$ is unknown, making it impossible to calculate the exact error of a numerical method; however, the error of methods can be estimated based off known parameters. The numerical methods discussed thus far have form 
+Error estimation is used to quantify accuracy and help predict how well the approximation will match system behavior. Ideally, to estimate error for one-step methods, the approximation is simply compared to the definite integral over the interval. Typically, the definite integral cannot be calculated explicitly as $f$ is unknown, making it impossible to calculate the exact error of a numerical method; however, the error of methods can be estimated based off known parameters. The numerical methods discussed thus far have form 
 
 $$u(t_i+h) = y_i + \int_{t_i}^{t_i+h}f(x)dx$$ 
 
