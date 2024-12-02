@@ -70,9 +70,31 @@ Forward and Backward Euler are both considered one-step methods because they onl
 ## Stability 
 The concept of stability refers to the sensitivity of the solution of a given problem to small perturbations in inputs such as data or parameters [1]. The problem can be sensitive for two reasons, because the system itself is fundamentally sensitive to changes in input, i.e., the problem is ill-conditioned, or the applied numerical method can be ill-conditioned. Certain methods are more stable than others, and ideally, a numerical method should not introduce additional sensitivity to a problem. 
 
-In using one-step numerical methods to solve an IVP, the next step at $t_{i+1}$ is approximated based on information from the previous step $t_i$. This goes for both explicit and implicit methods. Some error is typically introduced during this approximation. Worse, this error is then incorporated into the computation of the next step leading to errors being propagated through during the solution process. This has massive implications on explicit methods especially as we will see in the following discussion.  
+In using one-step numerical methods to solve an IVP, the next step at $t_{i+1}$ is approximated based on information from the previous step $t_i$. This goes for both explicit and implicit methods. Some error is typically introduced during this approximation. Worse, this error is then incorporated into the computation of the next step leading to errors being propagated through during the solution process. Unstable methods magnify errors, while unstable methods diminsh them. To better understand stability, consider the following simple example.
 
-Given an IVP 
+$$\dot{y} = \lambda x, \space \space y(0) = y_0$$
+
+where $\lambda$ is some constant. Applying Forward Euler, this becomes
+
+$$y_{i+1} \approx h\lambda y_i + y_i = (1+h\lamda)y_i$$
+
+where 
+
+$$y_i = (1+h\lambda)^iy_0$$
+
+Given that $h$ and the index value $i$ is are always positive, if the real component of $\lambda$ is greater than zero, then the exact solution of $y_k$ will grow exponentially making the problem ill-conditioned. If $\lambda$ is less than zero, then the exact solution of $y_k$ will decay exponentially making the problem well-conditioned. Note that if $\lambda$ is a complex number, then for Euler's method to be stable, the following must be true
+
+$$\left|1+h\lamda\right|<1$$
+
+i.e., $h\lambda must be inside a circle in the complex plane of radius 1 centered at -1. This may sound stringent, but recall that $h$ is typically very small. $If $\lambda$ is purely real, then the following must be true for Euler's method to be stable
+
+$$$h\le\frac{-2}{\lambda}$
+
+This gives a formulaic approach for the computation of stability for the most basic of IVPs. For more complicated IVPs, more robust methods such as perturbation theory, which will not be discussed here, are required to determine the stability of the problem. Note that to maintain stability of the method, $h$ must at least be relatively the size of the time scale of the problem, if not much smaller.
+
+
+## Accuracy
+Accuracy is fundamentally important to any problem solving technique. Without accuracy, the results are meaningless, and accuracy is dependent on stability and vice versa. The accuracy of a method is measured through error, which is better discussed via the following example. Given an IVP 
 
 $$\dot{u} = f(t,u), \space \space u(t_i) = y_i$$   
 
@@ -91,7 +113,7 @@ $$y(t_{i})-y{i} = [u(t_{i})-y_{i}] + [y(t_i)-u(t_i)]$$
 where the first bracketed term is the local error, controlled by the user [11], and the second bracketed term is the true error, the difference in the two solutions of the ODE at $t_i$. Control of local error is an extremely important part of selecting a numerical method. Without a reasonable local error, the results are meaningless. How to effectively manage local error will be further discussed in the [practical use](#practical-use) section. For explicit and implicit methods, local error can be controlled by manipulating the step size $h$. Recall that this has direct implications on computational run time. Implicit methods do have the additional benefit of partially having their local error controlled by the tolerance value used to root find $y_{i+1}$, and as such they are unconditionally stable [2]. This means that even with a relatively large step-size, implicit methods are stable. This becomes especially important when dealing with [stiff systems](#stiff-systems), which will be discussed later. The true error is typically unknown, so the local error is often used as the metric for accuracy [11]. If the IVP is stable, the true error will be comparable in magnitude to the local error for all time. If the IVP is unstable, the true error will grow regardless of the size of the local errors. Note this happens regardless of the numerical method, but using methods with lower local error can delay the rate of divergence from the true solution. To mitigate eroneous results, an appropriate time-step, and tolerance for implicit methods, must be selected for the desired interval, especially in cases where long range predictions are desired.
   
 
-## Accuracy and Error Estimation 
+## Error Estimation 
 Error estimation is key to understanding how well the approximation will match system behavior. To estimate error for one-step methods, the approximation is simply compared to the definite integral over the interval. Typically, the definite integral cannot be calculated explicitly as $f$ is unknown, making it impossible to calculate the exact error of a numerical method; however, the error of methods can be estimated based off known parameters. The numerical methods discussed thus far have form 
 
 $$u(t_i+h) = y_i + \int_{t_i}^{t_i+h}f(x)dx$$ 
