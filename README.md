@@ -175,6 +175,7 @@ where
 
 $$\left|\ddot{y_i}\right| \approx \left|\frac{\dot{y_i} - {{}\dot{y}_{i-1}} } {t_i-t_{i-1}}\right|$$
 
+$\dot{f_{\dot{x}}}$ & $\dot{f}_{\dot{x}}$ & $\dot{f}^{}_{\!\dot{x}}$ 
 
 ## Summary
 
