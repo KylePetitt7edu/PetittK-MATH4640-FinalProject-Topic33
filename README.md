@@ -62,15 +62,15 @@ Following similar steps, the equation can be simplified to
 
 $$f(x_{i+1},t_{i+1})h + x_i - x_{i+1} = 0$$   
 
-where $t_{i+1}$, $x_i$, and $h$ are all known, and $x_{i+1}$ is still unknown. This is often called Backward Euler Method. Depending on $f$, this can be an ugly, nonlinear equation and may require numerical methods to find the zero that yields the desired $x_{i+1}$. Note that it would take infinite iterations to find the exact zero, so the user is responsible for setting some acceptable tolerance value close to zero to approximate $x_{i+1}$. Smaller tolerances yield more accurate results but require a longer computational run time. Forward and Backward Euler are both considered one-step methods because they only rely on information from the previous step to calculate the next.   
+where $t_{i+1}$, $x_i$, and $h$ are all known, and $x_{i+1}$ is still unknown. This is often called Backward Euler Method. Depending on $f$, this can be an ugly, nonlinear equation and may require numerical methods to find the zero that yields the desired $x_{i+1}$. Note that it would take infinite iterations to find the exact zero, so the user is responsible for setting some acceptable tolerance value close to zero to approximate $x_{i+1}$. Smaller tolerances yield more accurate results but require a longer computational run time. 
 
-Having methods for solving otherwise unsolvable problems is a powerful tool, but the question remains: how accurate are these approximations, and how stable? 
+Forward and Backward Euler are both considered one-step methods because they only rely on information from the previous step to calculate the next. Having methods for solving otherwise unsolvable problems is a powerful tool, but the question remains: how accurate are these approximations, and how stable? 
 
 
 ## Stability 
 The concept of stability refers to the sensitivity of the solution of a given problem to small perturbations in inputs such as data or parameters [1]. The problem can be sensitive for two reasons, because the system itself is fundamentally sensitive to changes in input, i.e., the problem is ill-conditioned, or the applied numerical method can be ill-conditioned. Certain methods are more stable than others, and ideally, a numerical method should not introduce additional sensitivity to a problem. 
 
-In using single-stage numerical methods to solve an IVP, the next step at $t_{i+1}$ is approximated based on information from the previous step $t_i$. This goes for both explicit and implicit methods. Some error is typically introduced during this approximation. Worse, this error is then incorporated into the computation of the next step leading to errors being propagated through during the solution process. This has massive implications on explicit methods especially as we will see in the following discussion.  
+In using one-step numerical methods to solve an IVP, the next step at $t_{i+1}$ is approximated based on information from the previous step $t_i$. This goes for both explicit and implicit methods. Some error is typically introduced during this approximation. Worse, this error is then incorporated into the computation of the next step leading to errors being propagated through during the solution process. This has massive implications on explicit methods especially as we will see in the following discussion.  
 
 Given an IVP 
 
