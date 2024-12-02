@@ -76,7 +76,7 @@ $$\dot{y} = \lambda x, \space \space y(0) = y_0$$
 
 where $\lambda$ is some constant. Applying Forward Euler, this becomes
 
-$$y_{i+1} \approx h\lambda y_i + y_i = (1+h\lambda)y_i$$
+$$y_{i+1} = h\lambda y_i + y_i = (1+h\lambda)y_i$$
 
 where 
 
