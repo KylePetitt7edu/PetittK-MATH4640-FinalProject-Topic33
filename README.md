@@ -145,7 +145,7 @@ $$u(t_i+h) - y_{i+1} = \mathcal{O}\left(h^{2}\right)$$
 This shows the direct dependence of local error on step size, and just how dependent these specific methods are. The error of other methods can be computed similarly using the process shown. As one might expect, the simple, one-step Euler methods are less accurate locally than the more complicated, widely used algorithms. By how much will be discussed [later](#practical-use). 
 
 
-## Example and Sample Code 
+## Example
 The importance of accuracy and stability is best illustrated with a brief example. Consider the IVP 
 
 $$\dot{x} = \lambda x, \space \space x(0) = x_0, \space \space \lambda = -0.4$$ 
