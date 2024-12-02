@@ -207,6 +207,8 @@ Time-stepping numerical methods for IVPs are divided into two major categories, 
 * Practical Use section could use some organizing for better flow
 * Practical use section repeats a lot of what summary says
 * reorganzie stability, accuracy, error estimation sections
+* Final proofread
+* spellcheck in word
 
 
 ## References 
