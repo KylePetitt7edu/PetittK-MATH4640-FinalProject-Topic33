@@ -174,7 +174,7 @@ Stiff systems are difficult to define [13], but loosely, they converge to a stea
 ## Practical Use 
 Thus far the discussion has focused primarily on the theory of numerical methods in their most basic form, and how to determine key properties such as stability and accuracy. This section looks to discuss stability and accuracy for more advanced methods of numerical integration such as Runge-Kutta methods and IMEX, and how to control and limit local error. 
 
-IMEX methods are methods that combine implicit and explicit methods, taking advantage of both of their strengths. One such IMEX method is the Crank-Nicolson method which computes the next step by averaging the Forward Euler and Backwards Euler outputs [3]. By combining these methods, IMEX is more accurate than backwards Euler, while maintaining its unconditional stability and having approximately the same computational run time. 
+IMEX methods are hybrid methods that combine implicit and explicit methods, taking advantage of both of their strengths. One such IMEX method is the Crank-Nicolson method which computes the next step by averaging the Forward Euler and Backwards Euler outputs [3]. By combining these methods, IMEX is more accurate than backwards Euler, while maintaining its unconditional stability and having approximately the same computational run time. 
 
 The most widely used numerical methods are the multi-stage Runge-Kutta methods [4]. Runge-Kutta methods use the first three terms of the Taylor expansion when approximating $u_{i+1}$, while the Euler methods only uses the first two terms. This is done by approximating the second derivative as 
 
