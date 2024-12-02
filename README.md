@@ -20,7 +20,7 @@ $$x(t+\Delta t) = F(x(t))$$
 
 where the function $F$ can be calculated explicitly ([example shown later](#derivation-of-basic-explicit-and-implicit-methods)) and $x_i$ is known from the given initial condition or the previous time-step computation. Since all terms on the right side of the equation are known, the next system-state can be directly computed. The simplest form of explicit methods is Forward Euler Integration, but there are many other techniques such as explicit Runge-Kutta and the Adams-Bashford Algorithm [8]. 
 
-Implicit methods, on the other hand, look to find the next system-state by solving an equation using the current state and a future, unknown state(s). In most cases, iterative, numerical methods are required to solve for the unknown state as these functions are usually nonlinear in nature and cannot be solved explicitly. This algorithm is typically written as  
+Implicit methods, on the other hand, look to find the next system-state by solving an equation using the current state and a future, unknown state(s). In most cases, iterative, numerical methods, which will not be discussed here, are required to solve for the unknown state as these functions are usually nonlinear in nature and cannot be solved explicitly. This algorithm is typically written as  
 
 $$G(x(t),x(t+\Delta t)) = 0$$ 
 
@@ -185,6 +185,7 @@ Time-stepping numerical methods for IVPs are divided into two major categories, 
 * Practical Use section could use some organizing for better flow
 * Practical use section repeats a lot of what summary says
 * Discuss how to measure numerical stability
+* Reorganize stability and accuracy sections
 
 ## References 
 1. Atkinson, K. (2007). Numerical Analysis. Scholarpedia, 2(8), 3163. [(link)](http://www.scholarpedia.org/article/Numerical_methods) 
