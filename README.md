@@ -190,7 +190,7 @@ $$u_{i+1} = u_i + \frac{(k_1+2k_2+2k_3+k_4)}{6}$$
 
 By incorporating this second order term using several stages, the local error is decreased to $\mathcal{O}(h^{3})$ [12]. Runge-Kutta methods require more stages per step than Forward Euler, but the gains in accuracy make it worth it. Runge-Kutta can also be applied using an order higher than four but as the order continues to increase, the additional gains in accuracy decrease. At some point, the additional computational time required to compute more stages begins to outweigh the gains achieved in accuracy. The sweet spot is widely considered to be around fourth order [4]. Implicit Runge-Kutta methods can also be implemented similar to how Backwards Euler is modified from Forward Euler guaranteeing stability. 
 
-In practice, most software packages have built-in IVP solvers. These solvers are optimized to estimate and control error as they solve [12]. It is not expensive to estimate local error, so it is common practice to track local error during the integration process. There are several ways to do this, including doing a finite difference approximation to approximate a higher derivative of the solution or comparing results between solutions given by different methods [12] to determine if error between them is greater than some tolernace value. If the error is greater than some tolerance value when using step size $h_j$, then the algorithm can estimate what the error will be using a new step size $h_{j+1}$ and the solution can be recomputed with the new step size. One such method for estimating the proper step-size is [6] 
+In practice, most software packages have built-in IVP solvers. These solvers are optimized to estimate and control error as they solve [12]. It is not expensive to estimate local error, so it is common practice to track local error during the integration process. There are several ways to do this, including doing a finite difference approximation to approximate a higher derivative of the solution or comparing results between solutions given by different methods [12] to determine the error between them. If the error is greater than some tolerance value when using step size $h_j$, then the algorithm can estimate what the error will be using a new step size $h_{j+1}$ and the solution can be recomputed with the new step size. One such method for estimating the proper step-size is [6] 
 
 $$h_j \le \sqrt{\frac{2tol}{\left|\ddot{y}_i\right|}}$$ 
 
@@ -206,10 +206,7 @@ Time-stepping numerical methods for IVPs are divided into two major categories, 
 
 Numerical methods are a balancing act of accuracy and efficiency. It is important that results be accurate enough to be useful, but if they are too accurate, the computational run time may become too expensive to be worthwhile. Implicit methods are more computationally expensive than explicit methods and are often unnecessary for most problems. They guarantee stability, but the resources needed for the root-finding step are so expensive they cannot compete with explicit methods. However, [stiff systems](#stiff-systems) are a great counterexample of this. To make explicit methods accurate enough to effectively solve a stiff system, an extremely small time-step is needed to maintain stability and accuracy. Implicit methods are then required because of their unconditional stability. They are more computationally expensive per time-step, but overall, they are less computationally expensive to achieve the same accuracy because they do not need such small time-steps. 
 
-
-* Practical Use section could use some organizing for better flow
-* Practical use section repeats a lot of what summary says
-* Final proofread practical use onward
+* Final proofread summary onward
 * spellcheck in word
 
 
