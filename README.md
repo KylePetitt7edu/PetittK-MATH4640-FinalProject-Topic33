@@ -70,7 +70,7 @@ Forward and Backward Euler are both considered one-step methods because they onl
 ## Stability 
 The concept of stability refers to the sensitivity of the solution of a given problem to small perturbations in inputs such as data or parameters [1]. The problem can be sensitive for two reasons, because the system itself is fundamentally sensitive to changes in input, i.e., the problem is ill-conditioned, or the applied numerical method can be ill-conditioned. Certain methods are more stable than others, and ideally, a numerical method should not introduce additional sensitivity to a problem. 
 
-In using one-step numerical methods to solve an IVP, the next step at $t_{i+1}$ is approximated based on information from the previous step $t_i$. This goes for both explicit and implicit methods. Some error is typically introduced during this approximation. Worse, this error is then incorporated into the computation of the next step leading to errors being propagated through during the solution process. Unstable methods magnify errors, while unstable methods diminsh them. To better understand stability, consider the following simple example.
+In using one-step numerical methods to solve an IVP, the next step at $t_{i+1}$ is approximated based on information from the previous step $t_i$. This goes for both explicit and implicit methods. Some error is typically introduced during this approximation. Worse, this error is then incorporated into the computation of the next step leading to errors being propagated through during the solution process. Unstable methods magnify errors, while stable methods diminsh them. To better understand stability, consider the following simple example.
 
 $$\dot{y} = \lambda x, \space \space y(0) = y_0$$
 
