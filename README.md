@@ -12,7 +12,7 @@ In numerical analysis, time-stepping methods are one of the most fundamental for
 
   
 ## Background 
-The Existence and Uniqueness Theorem states that the solution to an IVP, $f$, exists and is unique over a specified internal if $f$ is continuous and continuously differentiable over that interval [10]. This is key for numerical methods because it guarantees an exact solution under these conditions. This also allows the error of an approximation to be computable and allows for the determination of stability [6]. 
+The Existence and Uniqueness Theorem states that the solution to an IVP, $f$, exists and is unique over a specified internal if $f$ is continuous and continuously differentiable over that interval [10]. This is key for numerical methods because it guarantees an exact solution exists under these conditions. This also allows the measurement of error and determination of stability of a numerical approximation of the system [6]. 
 
 Numerical methods for IVPs are separated into two primary categories, explicit and implicit [7]. Explicit methods approximate the state of the system at a later time based off of the state of the system at the current time. Given the differential equation and an initial condition, the algorithm can compute the next system-state over and over one step at a time. This is also commonly referred to as "time-marching." The algorithm is commonly written as  
 
