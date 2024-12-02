@@ -90,7 +90,7 @@ i.e., $h\lambda$ must be inside a circle in the complex plane of radius 1 center
 
 $$h\le\frac{-2}{\lambda}$$
 
-This gives a formulaic approach for the computation of stability for the most basic of IVPs. For more complicated IVPs, more robust methods such as perturbation theory, which will not be discussed here, are required to determine the stability of the problem. Note that to maintain stability of the method, $h$ must at least be relatively the size of the time scale of the problem, if not much smaller.
+This gives a formulaic approach for the determination of stability for the most basic of IVPs. For more complicated IVPs, more robust methods such as perturbation theory, which will not be discussed here, are required to determine the stability of the problem. Note that to maintain stability of the method, $h$ must at least be relatively the size of the time scale of the problem, if not much smaller.
 
 
 ## Accuracy
