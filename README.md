@@ -76,7 +76,7 @@ $$\dot{y} = \lambda x, \space \space y(0) = y_0$$
 
 where $\lambda$ is some constant. Applying Forward Euler, this becomes
 
-$$y_{i+1} \approx h\lambda y_i + y_i = (1+h\lamda)y_i$$
+$$y_{i+1} \approx h\lambda y_i + y_i = (1+h\lambda)y_i$$
 
 where 
 
@@ -84,11 +84,11 @@ $$y_i = (1+h\lambda)^iy_0$$
 
 Given that $h$ and the index value $i$ is are always positive, if the real component of $\lambda$ is greater than zero, then the exact solution of $y_k$ will grow exponentially making the problem ill-conditioned. If $\lambda$ is less than zero, then the exact solution of $y_k$ will decay exponentially making the problem well-conditioned. Note that if $\lambda$ is a complex number, then for Euler's method to be stable, the following must be true
 
-$$\left|1+h\lamda\right|<1$$
+$$\left|1+h\lambda\right|<1$$
 
 i.e., $h\lambda must be inside a circle in the complex plane of radius 1 centered at -1. This may sound stringent, but recall that $h$ is typically very small. $If $\lambda$ is purely real, then the following must be true for Euler's method to be stable
 
-$$$h\le\frac{-2}{\lambda}$
+$$h\le\frac{-2}{\lambda}$$
 
 This gives a formulaic approach for the computation of stability for the most basic of IVPs. For more complicated IVPs, more robust methods such as perturbation theory, which will not be discussed here, are required to determine the stability of the problem. Note that to maintain stability of the method, $h$ must at least be relatively the size of the time scale of the problem, if not much smaller.
 
